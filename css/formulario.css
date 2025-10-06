@@ -1,0 +1,105 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Poppins;
+    color: black;
+}
+
+@font-face {
+    font-family: Poppins;
+    src: url(../font/Poppins/Poppins-SemiBold.ttf) format(truetype);
+}
+
+
+body {
+    background-color: blanchedalmond;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.voltar {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+}
+
+.login {
+    background-color: white;
+    border-radius: 20px;
+    border: 2px black solid;
+    padding: 50px;
+    width: 30%;
+    font-size: 1.0em;
+}
+
+.login h3 {
+    align-self: center;
+    font-size: 2.0em;
+}
+
+.login form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login form input {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 10px;
+}
+
+span {
+    font-size: 0.6em;
+}
+
+
+.login form button {
+    align-self: center;
+    width: 30%;
+    background-color: #C1282D;
+    color: white;
+    border-radius: 25px;
+    padding: 0 20px;
+    margin: 30px 0 0 0;
+    font-size: 1.1em;
+}
+
+#darkModeBtn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 9999;
+    background: #FFF1E1;
+    border: none;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s;
+    padding: 0;
+}
+#darkModeBtn img {
+    width: 38px;
+    height: 38px;
+    pointer-events: none;
+    transition: opacity 0.2s;
+    position: absolute;
+}
+
+#darkModeBtn .icone-sol {
+    display: none;
+}
+
+#darkModeBtn .icone-lua {
+    display: none;
+}
