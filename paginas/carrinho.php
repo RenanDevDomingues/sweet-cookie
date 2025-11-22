@@ -119,7 +119,7 @@
             <div class="total">
                 <p>Total: </p>
                 <span id="total-carrinho-valor">R$ <?php echo formatarMoeda($total_carrinho); ?></span> 
-                <button>CHECKOUT</button>
+                <a href="checkout.php"><button>CHECKOUT</button></a>
             </div>
         </div>
     </main>

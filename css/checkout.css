@@ -1,0 +1,359 @@
+/* ============================
+   RESET / GLOBAL
+   ============================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --border-dark: 3px solid #000;
+    --border-light: 2px solid #000;
+
+    --radius: 20px;
+    --radius-small: 10px;
+
+    --transition-fast: .2s ease;
+    --transition-medium: .35s ease;
+
+    --label-size: 1.4rem;
+    --label-small: 1rem;
+
+    --highlight: 8px double #000;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    background-color: #FFF1E1;
+}
+
+main {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+}
+
+
+header {
+    position: absolute;
+    top: 3%;
+    left: 3%;
+    height: 50px;
+    width: 100px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+
+header button {
+    border: none;
+    background-color: transparent;
+    height: 100%;
+    width: 100%;
+    font-size: 2.0em;
+    cursor: pointer;
+}
+
+/* ============================
+   CARD DA ESQUERDA
+   ============================ */
+main .input {
+    width: 55%;
+    border: var(--border-dark);
+    border-radius: var(--radius);
+    padding: 30px;
+    background: #fff;
+
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* ============================
+   SEÇÃO — TITULOS
+   ============================ */
+main .input h2 {
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+}
+
+/* ============================
+   INPUT COM LABEL FLUTUANTE
+   ============================ */
+
+.contato,
+.local {
+    width: 100%;
+    padding-bottom: 25px;
+    border-bottom: var(--highlight);
+    position: relative;
+}
+
+.contato input,
+.local input {
+    width: 100%;
+    font-size: 1.6rem;
+    padding: 12px 10px;
+
+    border: var(--border-light);
+    border-radius: var(--radius-small);
+    outline: none;
+
+    transition: var(--transition-medium);
+}
+
+.contato label {
+    position: absolute;
+    left: 12px;
+    bottom: 44%;
+
+    font-size: var(--label-size);
+    background: white;
+    padding: 0 5px;
+
+    pointer-events: none;
+    transition: var(--transition-fast);
+}
+
+.local label {
+    position: absolute;
+    left: 12px;
+    bottom: 51%;
+
+    font-size: var(--label-size);
+    padding: 0 5px;
+
+    pointer-events: none;
+    transition: var(--transition-fast);
+}
+
+/* Quando o input está preenchido ou focado */
+.contato input:focus + label,
+.contato input:not(:placeholder-shown) + label {
+    bottom: 60%;
+    font-size: var(--label-small);
+    color: #666;
+}
+
+.contato input:focus,
+.contato input:not(:placeholder-shown) {
+    padding-top: 3%;
+}
+
+.local input:focus + label,
+.local input:not(:placeholder-shown) + label {
+    bottom: 65%;
+    font-size: var(--label-small);
+    color: #666;
+}
+
+.local input:focus, .local input:not(:placeholder-shown) {
+    padding-top: 3%;
+}
+
+/* ============================
+   CHECKBOX
+   ============================ */
+.contato .checkbox {
+    margin-top: 10px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.contato .checkbox input {
+    width: 25px;
+    height: 25px;
+}
+
+/* ============================
+   PAGAMENTO
+   ============================ */
+
+.pagamento {
+    width: 100%;
+    padding-bottom: 25px;
+    border-bottom: var(--highlight);
+}
+
+.pagamento .forma {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    gap: 5%;
+}
+
+.pagamento .forma > div {
+    width: 15%;
+    height: 90px;
+
+    border: var(--border-dark);
+    border-radius: var(--radius-small);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.pagamento .forma > div:hover {
+    background: #f0f0f0;
+}
+
+.pagamento .forma div img {
+    height: 60%;
+    width: 40%;
+}
+
+.escuro {
+    position: absolute;
+    display: none;
+    background-color: rgb(0, 0, 0, 0.5);
+    height: 100vh;
+    width: 100vw;
+}
+
+.infopagamento {
+    position: absolute;
+    display: none;
+    justify-self: center;
+    align-self: center;
+    height: 70%;
+    width: 50%;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 15px;
+    z-index: 2;
+}
+
+/* ============================
+   BOTÃO DO CEP
+   ============================ */
+.local button {
+    margin-top: 15px;
+    margin-left: 85%;
+    width: 120px;
+    padding: 10px;
+    font-size: 1.3rem;
+
+    border: var(--border-dark);
+    border-radius: var(--radius-small);
+    background: white;
+    cursor: pointer;
+
+    transition: var(--transition-fast);
+}
+
+.local button:hover {
+    background: #f7f7f7;
+}
+
+/* ============================
+   CARD DA DIREITA (Resumo)
+   ============================ */
+/* Check */
+
+main .check {
+    width: 30%;
+    height: 50%;
+    padding: 1%;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+main .check .valor {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    border: 1px solid black;
+    gap: 5px;
+}
+
+.valor .original {
+    display: flex;
+    flex-direction: row;
+    text-indent: 15px;
+}
+.valor .desconto {
+    display: flex;
+    flex-direction: column;
+}
+
+.valor .desconto .des_total {
+    display: flex;
+    flex-direction: row;
+    text-indent: 15px;
+}
+
+.lista {
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    align-self: center;
+    height: 100%;
+    min-height: 140px;
+    width: 95%;
+    border: 2px solid black;
+    overflow-y: auto;  /* Scroll vertical */
+    overflow-x: hidden; /* opcional */
+}
+
+main .check .total {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.check .total p, .check .total span {
+    font-size: 2.0em;
+}
+
+.check .total button {
+    border: 2px solid darkred;
+    border-radius: 10px;
+    background-color: #C62828;
+    color: white;
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 5px 10px;
+}
+
+/* ============================
+   RESPONSIVO
+   ============================ */
+@media (max-width: 900px) {
+    main {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    main .input,
+    .check {
+        width: 90%;
+    }
+}
