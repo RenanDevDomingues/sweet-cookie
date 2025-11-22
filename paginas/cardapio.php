@@ -4,9 +4,26 @@
 
     if(!empty($_SESSION['logado'])){
         $usuario = $_SESSION['usuario'];
-    } else {
+    } 
+    else{
         header("Location: login.php");
     }
+
+    include("../config/conexao.php");
+
+    $cartCount = 0;
+    if (isset($_SESSION['carrinho'])) 
+    {
+        foreach ($_SESSION['carrinho'] as $item){
+            $cartCount += $item['quantidade'];
+        }
+    }
+
+    $sql = "SELECT * FROM produtos WHERE tipo = 'cookie_doce' ORDER BY id";
+    $result_doce = $conn->query($sql);
+
+    $sql = "SELECT * FROM produtos WHERE tipo = 'cookie_salgado' ORDER BY id";
+    $result_salgado = $conn->query($sql);
 ?>
 
 <!DOCTYPE html>
@@ -62,7 +79,7 @@
                 ?>
                 <a href="#" class="cart-area">
                     <img src="../img/carrinho.svg" alt="Carrinho de Compras" class="cart-icon">
-                    <span class="cart-badge">2</span>
+                    <span class="cart-badge"><?= $cartCount ?></span>
                 </a>
                 <button class="menu-icon"><img src="../img/navbar-hero.svg" alt=""></button>
             </div>
@@ -111,78 +128,30 @@
         <h2>Nossos Cookies Doces Especiais</h2>
         <span class="cardapio-subtitle">Receitas irresistíveis criadas para adoçar todos os momentos</span>
         <div class="cardapio-lista">
-            <!-- Card 1 -->
-            <div class="cardapio-card">
-                <div class="cardapio-img-area">
-                    <img src="../img/choco-belga.png" alt="Chocolate Belga">
-                    <span class="badge">Mais Vendido</span>
+            <?php while ($produto = $result_doce->fetch_assoc()): ?>
+
+                <div class="cardapio-card">
+                    <div class="cardapio-img-area">
+                        <img src="../uploads/produtos/<?php echo $produto['imagem']; ?>" 
+                            alt="<?php echo $produto['nome']; ?>">
+                        
+                            <span class="badge bg-pink">Doce</span>
+                    </div>
+
+                    <h3><?php echo $produto['nome']; ?></h3>
+                    <p><?php echo $produto['descricao']; ?></p>
+                    <span class="preco">
+                        R$ <?php echo number_format($produto['preco'], 2, ',', '.'); ?>
+                    </span>
+                    <div class="qty-control" data-id="<?= $produto['id'] ?>">
+                        <button class="qty-btn qty-minus">−</button>
+                        <span class="qty-value">0</span>
+                        <button class="qty-btn qty-plus">+</button>
+                    </div>
+
                 </div>
-                <h3>Chocolate Belga</h3>
-                <p>Feito com chocolate belga 70% cacau e pedaços crocantes</p>
-            </div>
-            <!-- Card 2 -->
-            <div class="cardapio-card">
-                <div class="cardapio-img-area">
-                    <img src="../img/choco-belga.png" alt="Chocolate Belga">
-                    <span class="badge">Mais Vendido</span>
-                </div>
-                <h3>Chocolate Belga</h3>
-                <p>Feito com chocolate belga 70% cacau e pedaços crocantes</p>
-            </div>
-            <!-- Card 3 -->
-            <div class="cardapio-card">
-                <div class="cardapio-img-area">
-                    <img src="../img/choco-belga.png" alt="Chocolate Belga">
-                    <span class="badge">Mais Vendido</span>
-                </div>
-                <h3>Chocolate Belga</h3>
-                <p>Feito com chocolate belga 70% cacau e pedaços crocantes</p>
-            </div>
-            <!-- Card 4 -->
-            <div class="cardapio-card">
-                <div class="cardapio-img-area">
-                    <img src="../img/choco-belga.png" alt="Chocolate Belga">
-                    <span class="badge">Mais Vendido</span>
-                </div>
-                <h3>Chocolate Belga</h3>
-                <p>Feito com chocolate belga 70% cacau e pedaços crocantes</p>
-            </div>
-            <!-- Card 5 -->
-            <div class="cardapio-card">
-                <div class="cardapio-img-area">
-                    <img src="../img/choco-belga.png" alt="Chocolate Belga">
-                    <span class="badge">Mais Vendido</span>
-                </div>
-                <h3>Chocolate Belga</h3>
-                <p>Feito com chocolate belga 70% cacau e pedaços crocantes</p>
-            </div>
-            <!-- Card 6 -->
-            <div class="cardapio-card">
-                <div class="cardapio-img-area">
-                    <img src="../img/choco-belga.png" alt="Chocolate Belga">
-                    <span class="badge">Mais Vendido</span>
-                </div>
-                <h3>Chocolate Belga</h3>
-                <p>Feito com chocolate belga 70% cacau e pedaços crocantes</p>
-            </div>
-            <!-- Card 7 -->
-            <div class="cardapio-card">
-                <div class="cardapio-img-area">
-                    <img src="../img/choco-belga.png" alt="Chocolate Belga">
-                    <span class="badge">Mais Vendido</span>
-                </div>
-                <h3>Chocolate Belga</h3>
-                <p>Feito com chocolate belga 70% cacau e pedaços crocantes</p>
-            </div>
-            <!-- Card 8 -->
-            <div class="cardapio-card">
-                <div class="cardapio-img-area">
-                    <img src="../img/choco-belga.png" alt="Chocolate Belga">
-                    <span class="badge">Mais Vendido</span>
-                </div>
-                <h3>Chocolate Belga</h3>
-                <p>Feito com chocolate belga 70% cacau e pedaços crocantes</p>
-            </div>
+
+            <?php endwhile; ?>
         </div>
     </section>
     <!-- Perso o seu cookie -->
@@ -223,80 +192,32 @@
     <!-- CARDÁPIO2 -->
     <section class="cardapio-section">
         <h2>Nossos Cookies Salgados Especiais</h2>
-        <span class="cardapio-subtitle">Receitas irresistíveis criadas para adoçar todos os momentos</span>
+        <span class="cardapio-subtitle">Receitas irresistíveis criadas para salgar todos os momentos</span>
         <div class="cardapio-lista">
-            <!-- Card 9 -->
-            <div class="cardapio-card">
-                <div class="cardapio-img-area">
-                    <img src="../img/choco-belga.png" alt="Chocolate Belga">
-                    <span class="badge">Mais Vendido</span>
+            <?php while ($produto = $result_salgado->fetch_assoc()): ?>
+
+                <div class="cardapio-card">
+                    <div class="cardapio-img-area">
+                        <img src="../uploads/produtos/<?php echo $produto['imagem']; ?>" 
+                            alt="<?php echo $produto['nome']; ?>">
+                        
+                        <span class="badge bg-orange">Salgado</span>
+                    </div>
+
+                    <h3><?php echo $produto['nome']; ?></h3>
+                    <p><?php echo $produto['descricao']; ?></p>
+                    <span class="preco">
+                        R$ <?php echo number_format($produto['preco'], 2, ',', '.'); ?>
+                    </span>
+                    <div class="qty-control" data-id="<?= $produto['id'] ?>">
+                        <button class="qty-btn qty-minus">−</button>
+                        <span class="qty-value">0</span>
+                        <button class="qty-btn qty-plus">+</button>
+                    </div>
+
                 </div>
-                <h3>Chocolate Belga</h3>
-                <p>Feito com chocolate belga 70% cacau e pedaços crocantes</p>
-            </div>
-            <!-- Card 10 -->
-            <div class="cardapio-card">
-                <div class="cardapio-img-area">
-                    <img src="../img/choco-belga.png" alt="Chocolate Belga">
-                    <span class="badge">Mais Vendido</span>
-                </div>
-                <h3>Chocolate Belga</h3>
-                <p>Feito com chocolate belga 70% cacau e pedaços crocantes</p>
-            </div>
-            <!-- Card 11 -->
-            <div class="cardapio-card">
-                <div class="cardapio-img-area">
-                    <img src="../img/choco-belga.png" alt="Chocolate Belga">
-                    <span class="badge">Mais Vendido</span>
-                </div>
-                <h3>Chocolate Belga</h3>
-                <p>Feito com chocolate belga 70% cacau e pedaços crocantes</p>
-            </div>
-            <!-- Card 12 -->
-            <div class="cardapio-card">
-                <div class="cardapio-img-area">
-                    <img src="../img/choco-belga.png" alt="Chocolate Belga">
-                    <span class="badge">Mais Vendido</span>
-                </div>
-                <h3>Chocolate Belga</h3>
-                <p>Feito com chocolate belga 70% cacau e pedaços crocantes</p>
-            </div>
-            <!-- Card 13 -->
-            <div class="cardapio-card">
-                <div class="cardapio-img-area">
-                    <img src="../img/choco-belga.png" alt="Chocolate Belga">
-                    <span class="badge">Mais Vendido</span>
-                </div>
-                <h3>Chocolate Belga</h3>
-                <p>Feito com chocolate belga 70% cacau e pedaços crocantes</p>
-            </div>
-            <!-- Card 14-->
-            <div class="cardapio-card">
-                <div class="cardapio-img-area">
-                    <img src="../img/choco-belga.png" alt="Chocolate Belga">
-                    <span class="badge">Mais Vendido</span>
-                </div>
-                <h3>Chocolate Belga</h3>
-                <p>Feito com chocolate belga 70% cacau e pedaços crocantes</p>
-            </div>
-            <!-- Card 15 -->
-            <div class="cardapio-card">
-                <div class="cardapio-img-area">
-                    <img src="../img/choco-belga.png" alt="Chocolate Belga">
-                    <span class="badge">Mais Vendido</span>
-                </div>
-                <h3>Chocolate Belga</h3>
-                <p>Feito com chocolate belga 70% cacau e pedaços crocantes</p>
-            </div>
-            <!-- Card 16 -->
-            <div class="cardapio-card">
-                <div class="cardapio-img-area">
-                    <img src="../img/choco-belga.png" alt="Chocolate Belga">
-                    <span class="badge">Mais Vendido</span>
-                </div>
-                <h3>Chocolate Belga</h3>
-                <p>Feito com chocolate belga 70% cacau e pedaços crocantes</p>
-            </div>
+
+            <?php endwhile; ?>
         </div>
     </section>
     <!-- FOOTER -->
@@ -320,5 +241,56 @@
             </div>
             <script src="../js/navbar.js"></script>
             <script src="../js/darkmode.js"></script>
+            <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script>
+        $(document).ready(function() 
+        {
+            function updateCart(productId, action, $container) 
+            {
+                $.ajax({
+                    url: '../actions/CarrinhoAdd.php',
+                    method: 'POST',
+                    dataType: 'json',
+                    data: {
+                        id: productId,
+                        action: action
+                    },
+                    success: function(data) 
+                    {
+                        if (data.status === 'success') 
+                        {
+                            $('.cart-badge').text(data.cart_count);
+
+                            $container.find('.qty-value').text(data.item_quantity);
+                        } 
+                        else{
+                            alert(data.message);
+                        }
+                    },
+                    error: function(){
+                        alert('Erro ao comunicar com o servidor.');
+                    }
+                });
+            }
+
+            $('.qty-plus').on('click', function() 
+            {
+                let $container = $(this).closest('.qty-control');
+                let id = $container.data('id');
+                updateCart(id, 'add', $container);
+            });
+
+            $('.qty-minus').on('click', function() 
+            {
+                let $container = $(this).closest('.qty-control');
+                let id = $container.data('id');
+                let currentQty = parseInt($container.find('.qty-value').text());
+
+                if (currentQty > 0){
+                    updateCart(id, 'remove', $container);
+                }
+            });
+        });
+    </script>
 </body>
 </html>
