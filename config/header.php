@@ -1,49 +1,71 @@
 <?php
-session_start();
-$usuario = null;
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
+if (!isset($path)) {
+    $path = "../"; 
+}
+
+$usuario = null;
 if (!empty($_SESSION['logado'])) {
     $usuario = $_SESSION['usuario'];
 }
+
+$cart_count = 0;
+if (isset($_SESSION['carrinho'])) {
+    foreach ($_SESSION['carrinho'] as $item) {
+        $cart_count += $item['quantidade'];
+    }
+}
 ?>
+
+<link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700,800&display=swap" rel="stylesheet">
 
 <header>
     <div class="header-content">
-        <a href="index.php">
-            <img src="img/Sweet.svg" alt="Sweet Cookies" class="logo">
+        <a href="<?php echo $path; ?>index.php">
+            <img src="<?php echo $path; ?>img/Sweet.svg" alt="Sweet Cookies" class="logo">
         </a>
+        
         <div class="header-search">
             <input type="text" placeholder="O que deseja buscar?">
             <button>
-                <img src="img/lupa.svg" alt="Buscar">
-                <span class="sr-only"></span>
-                </span>
+                <img src="<?php echo $path; ?>img/lupa.svg" alt="Buscar">
             </button>
         </div>
+
         <div class="header-actions">
             <div class="darkmode">
                 <div class="darkmode-toggle"></div>
             </div>
-            <a href="#" class="login">
-                <img src="img/usuario.svg" alt="Usuário">
+            
+            <div class="login-area">
+                <?php if ($usuario): ?>
+                    <a href="<?php echo $path; ?>actions/UsuarioLogout.php" class="login">
+                        <img src="<?php echo $path; ?>img/usuario.svg" alt="Usuário">
+                        <span>Deslogar</span>
+                    </a>
+                <?php else: ?>
+                    <a href="<?php echo $path; ?>paginas/login2.php" class="login">
+                        <img src="<?php echo $path; ?>img/usuario.svg" alt="Login">
+                        <span>Faça login <br>ou cadastro</span>
+                    </a>
+                <?php endif; ?>
+            </div>
 
-                <?php
-                if ($usuario) {
-                    echo '<a href="./actions/UsuarioLogout.php" class="login">Deslogar</a>';
-
-                } else {
-                    echo '<a href="./paginas/login2.php" class="login"><span>Faça login <br>ou seu cadastro</a>';
-                }
-                ?>
+            <a href="<?php echo $path; ?>paginas/carrinho.php" class="cart-area">
+                <img src="<?php echo $path; ?>img/carrinho.svg" alt="Carrinho" class="cart-icon">
+                <span class="cart-badge"><?= $cart_count ?></span>
             </a>
-            <!--carrinho-->
-            <a href="#" class="cart-area">
-                <img src="img/carrinho.svg" alt="Carrinho de Compras" class="cart-icon">
-                <span class="cart-badge">2</span>
-            </a>
+            
             <button class="menu-icon">
-                <img src="img/navbar-hero.svg" alt="Menu">
+                <img src="<?php echo $path; ?>img/navbar-hero.svg" alt="Menu">
             </button>
         </div>
     </div>
 </header>
+
+<script src="../js/navbar.js"></script>
+<script src="../js/darkmode.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>

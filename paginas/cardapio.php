@@ -1,23 +1,14 @@
 <?php 
     session_start();
-    $usuario = null;
-
-    if(!empty($_SESSION['logado'])){
-        $usuario = $_SESSION['usuario'];
-    } 
-    else{
+    if (empty($_SESSION['logado'])) 
+    {
         header("Location: login.php");
+        exit;
     }
+
+    $usuario = $_SESSION['usuario'];
 
     include("../config/conexao.php");
-
-    $cartCount = 0;
-    if (isset($_SESSION['carrinho'])) 
-    {
-        foreach ($_SESSION['carrinho'] as $item){
-            $cartCount += $item['quantidade'];
-        }
-    }
 
     $sql = "SELECT * FROM produtos WHERE tipo = 'cookie_doce' ORDER BY id";
     $result_doce = $conn->query($sql);
@@ -34,57 +25,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cardápio | Sweet Cookies</title>
     <link rel="stylesheet" href="../css/cardapio.css">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700,800&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <!-- HEADER -->
-    <header>
-        <div class="header-content">
-            <a href="../index.php">
-            <img src="../img/Sweet.svg" alt="Sweet Cookies" class="logo">
-            </a>
-            <div class="header-search">
-                <input type="text" placeholder="O que deseja buscar?">
-                <button>
-                    <!-- SVG Lupa -->
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                        <circle cx="9" cy="9" r="7" stroke="#C62828" stroke-width="2" />
-                        <line x1="14.4142" y1="14" x2="18" y2="17.5858" stroke="#C62828" stroke-width="2"
-                            stroke-linecap="round" />
-                    </svg>
-                </button>
-            </div>
-            <div class="header-actions">
-                <div class="darkmode">
-                    <div class="darkmode-toggle"></div>
-                </div>
-
-                <?php
-                    if($usuario){
-                        echo'<a href="../actions/UsuarioLogout.php" class="login"><img src="../img/usuario.svg" alt="">Deslogar</a>';
-                        
-                    }
-                    else{
-                        echo '
-                            <div class="login">
-                                <img src="../img/usuario.svg">
-                                <div class="input-login">
-                                    <a href="login.php">Faça Login</a><br>
-                                    <a href="cadastro.php">ou Faça seu Cadstro</a>
-                                </div>
-                            </div>
-                        ';
-                    } 
-                ?>
-                <a href="#" class="cart-area">
-                    <img src="../img/carrinho.svg" alt="Carrinho de Compras" class="cart-icon">
-                    <span class="cart-badge"><?= $cartCount ?></span>
-                </a>
-                <button class="menu-icon"><img src="../img/navbar-hero.svg" alt=""></button>
-            </div>
-        </div>
-    </header>
+    <?php 
+        include("../config/header.php"); 
+    ?>
         <div class="nav-menu">
         <div class="menu">
             <div class="option" id="close-menu">
@@ -130,12 +76,20 @@
         <div class="cardapio-lista">
             <?php while ($produto = $result_doce->fetch_assoc()): ?>
 
+                <?php
+                    $quantidade_atual = 0;
+
+                    if (isset($_SESSION['carrinho']) && isset($_SESSION['carrinho'][$produto['id']])){
+                        $quantidade_atual = $_SESSION['carrinho'][$produto['id']]['quantidade'];
+                    }
+                ?>
+
                 <div class="cardapio-card">
                     <div class="cardapio-img-area">
                         <img src="../uploads/produtos/<?php echo $produto['imagem']; ?>" 
                             alt="<?php echo $produto['nome']; ?>">
                         
-                            <span class="badge bg-pink">Doce</span>
+                        <span class="badge bg-pink">Doce</span>
                     </div>
 
                     <h3><?php echo $produto['nome']; ?></h3>
@@ -143,9 +97,12 @@
                     <span class="preco">
                         R$ <?php echo number_format($produto['preco'], 2, ',', '.'); ?>
                     </span>
+                    
                     <div class="qty-control" data-id="<?= $produto['id'] ?>">
                         <button class="qty-btn qty-minus">−</button>
-                        <span class="qty-value">0</span>
+                        
+                        <span class="qty-value"><?php echo $quantidade_atual; ?></span>
+                        
                         <button class="qty-btn qty-plus">+</button>
                     </div>
 
@@ -196,6 +153,14 @@
         <div class="cardapio-lista">
             <?php while ($produto = $result_salgado->fetch_assoc()): ?>
 
+                <?php
+                    $quantidade_atual = 0;
+
+                    if (isset($_SESSION['carrinho']) && isset($_SESSION['carrinho'][$produto['id']])){
+                        $quantidade_atual = $_SESSION['carrinho'][$produto['id']]['quantidade'];
+                    }
+                ?>
+
                 <div class="cardapio-card">
                     <div class="cardapio-img-area">
                         <img src="../uploads/produtos/<?php echo $produto['imagem']; ?>" 
@@ -211,7 +176,7 @@
                     </span>
                     <div class="qty-control" data-id="<?= $produto['id'] ?>">
                         <button class="qty-btn qty-minus">−</button>
-                        <span class="qty-value">0</span>
+                        <span class="qty-value"><?php echo $quantidade_atual; ?></span>
                         <button class="qty-btn qty-plus">+</button>
                     </div>
 
@@ -239,9 +204,7 @@
                 <a href="#">Termos de uso</a>
                 <a href="#">Segurança de dados</a>
             </div>
-            <script src="../js/navbar.js"></script>
-            <script src="../js/darkmode.js"></script>
-            <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+            
     <script>
         $(document).ready(function() 
         {

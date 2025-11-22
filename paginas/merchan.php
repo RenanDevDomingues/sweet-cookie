@@ -16,52 +16,9 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700,800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- HEADER -->
-    <header>
-        <div class="header-content">
-            <a href="../index.php">
-            <img src="../img/Sweet.svg" alt="Sweet Cookies" class="logo">
-        </a>
-            <div class="header-search">
-                <input type="text" placeholder="O que deseja buscar?">
-                <button>
-                    <img src="../img/lupa.svg" alt="Buscar">
-                    <span class="sr-only"></span>
-                    </span>
-                </button>
-            </div>
-            <div class="header-actions">
-                <div class="darkmode">
-                    <div class="darkmode-toggle"></div>
-                </div>
-                <?php
-                    if($usuario){
-                        echo'<a href="../actions/UsuarioLogout.php" class="login"><img src="../img/usuario.svg" alt="">Deslogar</a>';
-                        
-                    }
-                    else{
-                        echo '
-                            <div class="login">
-                                <img src="../img/usuario.svg">
-                                <div class="input-login">
-                                    <a href="login.php">Faça Login</a><br>
-                                    <a href="cadastro.php">ou Faça seu Cadstro</a>
-                                </div>
-                            </div>
-                        ';
-                    } 
-                ?>
-                <!--carrinho-->
-                <a href="#" class="cart-area">
-                    <img src="../img/carrinho.svg" alt="Carrinho de Compras" class="cart-icon">
-                    <span class="cart-badge">2</span>
-                </a>
-                <button class="menu-icon">
-                    <img src="../img/navbar-hero.svg" alt="Menu">
-                </button>
-            </div>
-        </div>
-    </header>
+    <?php 
+        include("../config/header.php"); 
+    ?>
     <div class="nav-menu">
         <div class="menu">
             <div class="option" id="close-menu">
