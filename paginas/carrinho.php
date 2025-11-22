@@ -38,7 +38,7 @@
 
                 <?php
                     if($usuario){
-                        echo'<a href="actions/UsuarioLogout.php" class="login"><img src="img/usuario.svg" alt="">Deslogar</a>';
+                        echo'<a href="actions/UsuarioLogout.php" class="login"><img src="../img/usuario.svg" alt="">Deslogar</a>';
                         
                     }
                     else{
