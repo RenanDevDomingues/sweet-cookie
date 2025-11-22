@@ -777,3 +777,18 @@ footer::before {
         max-width: 350px;
      }
     }
+
+.user-logout {
+  display: flex;
+  align-items: center;
+  gap: 2px; /* Espaço entre ícone e texto */
+}
+
+.logout-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+}
+.logout-link:hover {
+  color: #ff1100;
+}

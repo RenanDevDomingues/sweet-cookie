@@ -24,6 +24,14 @@ if ($stmt->execute())
     $result = $stmt->get_result();
     $usuario = $result->fetch_assoc();
 
+    // Registrar log de cadastro
+    $usuario_id = $usuario['id'];
+    $acao = 'Cadastro';
+    $stmt_log = $conn->prepare("INSERT INTO logs (usuario_id, acao) VALUES (?, ?)");
+    $stmt_log->bind_param("is", $usuario_id, $acao);
+    $stmt_log->execute();
+    $stmt_log->close();
+
     session_start();
     $_SESSION['usuario'] = $usuario;
     $_SESSION['logado'] = true;
