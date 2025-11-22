@@ -54,7 +54,7 @@
                         ';
                     } 
                 ?>
-                <a href="#" class="cart-area">
+                <a href="paginas/carrinho.php" class="cart-area">
                     <img src="img/carrinho.svg" alt="Carrinho de Compras" class="cart-icon">
                     <span class="cart-badge">2</span>
                 </a>
