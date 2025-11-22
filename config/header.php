@@ -47,7 +47,7 @@ if (isset($_SESSION['carrinho'])) {
                         <span>Deslogar</span>
                     </a>
                 <?php else: ?>
-                    <a href="<?php echo $path; ?>paginas/login2.php" class="login">
+                    <a href="<?php echo $path; ?>paginas/login.php" class="login">
                         <img src="<?php echo $path; ?>img/usuario.svg" alt="Login">
                         <span>Faça login <br>ou cadastro</span>
                     </a>
