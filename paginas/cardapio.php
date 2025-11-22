@@ -31,44 +31,7 @@
     <?php 
         include("../config/header.php"); 
     ?>
-        <div class="nav-menu">
-        <div class="menu">
-            <div class="option" id="close-menu">
-                <img src="../img/navbar-hero.svg" alt="Menu">
-                <h2>Menu</h2>
-            </div>
-            <div class="option">
-                <img src="../img/casa.svg" alt="home">
-                <a href="../index.php">
-                    <h2>Inicio</h2>
-                </a>
-            </div>
-            <div class="option">
-                <img src="../img/cookie.svg" alt="Cardapio">
-                <a href="cardapio.php">
-                <h2>Cardapio</h2>
-            </a>
-            </div>
-            <div class="option">
-                <img src="../img/presente.svg" alt="Kits e Presentes">
-                <a href="merchan.php">
-                <h2>Kits e Presentes</h2>
-            </a>
-            </div>
-            <div class="option">
-            </div>
-            <div class="promododia">
-                <img src="../img/navbar-hero.svg" alt="Promoção do Dia">
-                <a href="../index.php">
-                <h2>Promoção do Dia</h2>
-            </a>
-            </div>
-        </div>
-    </div>
-    <div class="sombra"></div>
-    </section>
-
-
+    
     <!-- CARDÁPIO -->
     <section class="cardapio-section">
         <h2>Nossos Cookies Doces Especiais</h2>

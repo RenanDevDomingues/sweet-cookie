@@ -8,13 +8,21 @@ if (!isset($path)) {
 }
 
 $usuario = null;
-if (!empty($_SESSION['logado'])) {
+$nivel_usuario = '1'; 
+
+if (!empty($_SESSION['logado'])) 
+{
     $usuario = $_SESSION['usuario'];
+    
+    if (isset($usuario['nivel'])){
+        $nivel_usuario = $usuario['nivel'];
+    }
 }
 
 $cart_count = 0;
-if (isset($_SESSION['carrinho'])) {
-    foreach ($_SESSION['carrinho'] as $item) {
+if (isset($_SESSION['carrinho'])) 
+{
+    foreach ($_SESSION['carrinho'] as $item){
         $cart_count += $item['quantidade'];
     }
 }
@@ -28,17 +36,22 @@ if (isset($_SESSION['carrinho'])) {
             <img src="<?php echo $path; ?>img/Sweet.svg" alt="Sweet Cookies" class="logo">
         </a>
         
-        <div class="header-search">
-            <input type="text" placeholder="O que deseja buscar?">
-            <button>
-                <img src="<?php echo $path; ?>img/lupa.svg" alt="Buscar">
-            </button>
-        </div>
+        <?php if ($nivel_usuario != '2'): ?>
+            <div class="header-search">
+                <input type="text" placeholder="O que deseja buscar?">
+                <button>
+                    <img src="<?php echo $path; ?>img/lupa.svg" alt="Buscar">
+                </button>
+            </div>
+        <?php endif; ?>
 
         <div class="header-actions">
-            <div class="darkmode">
-                <div class="darkmode-toggle"></div>
-            </div>
+            
+            <?php if ($nivel_usuario != '2'): ?>
+                <div class="darkmode">
+                    <div class="darkmode-toggle"></div>
+                </div>
+            <?php endif; ?>
             
             <div class="login-area">
                 <?php if ($usuario): ?>
@@ -54,17 +67,55 @@ if (isset($_SESSION['carrinho'])) {
                 <?php endif; ?>
             </div>
 
-            <a href="<?php echo $path; ?>paginas/carrinho.php" class="cart-area">
-                <img src="<?php echo $path; ?>img/carrinho.svg" alt="Carrinho" class="cart-icon">
-                <span class="cart-badge"><?= $cart_count ?></span>
-            </a>
+            <?php if ($nivel_usuario != '2'): ?>
+                <a href="<?php echo $path; ?>paginas/carrinho.php" class="cart-area">
+                    <img src="<?php echo $path; ?>img/carrinho.svg" alt="Carrinho" class="cart-icon">
+                    <span class="cart-badge"><?= $cart_count ?></span>
+                </a>
+                
+                <button class="menu-icon">
+                    <img src="<?php echo $path; ?>img/navbar-hero.svg" alt="Menu">
+                </button>
+            <?php endif; ?>
             
-            <button class="menu-icon">
-                <img src="<?php echo $path; ?>img/navbar-hero.svg" alt="Menu">
-            </button>
         </div>
     </div>
 </header>
+<div class="nav-menu">
+    <div class="menu">
+        <div class="option" id="close-menu">
+            <img src="<?php echo $path; ?>img/navbar-hero.svg" alt="Menu">
+            <h2>Menu</h2>
+        </div>
+        <div class="option">
+            <img src="<?php echo $path; ?>img/casa.svg" alt="home">
+            <a href="<?php echo $path; ?>index.php">
+                <h2>Inicio</h2>
+            </a>
+        </div>
+        <div class="option">
+            <img src="<?php echo $path; ?>img/cookie.svg" alt="Cardapio">
+            <a href="<?php echo $path; ?>paginas/cardapio.php">
+            <h2>Cardapio</h2>
+        </a>
+        </div>
+        <div class="option">
+            <img src="<?php echo $path; ?>img/presente.svg" alt="Kits e Presentes">
+            <a href="<?php echo $path; ?>paginas/merchan.php">
+            <h2>Kits e Presentes</h2>
+        </a>
+        </div>
+        <div class="option">
+        </div>
+        <div class="promododia">
+            <img src="<?php echo $path; ?>img/navbar-hero.svg" alt="Promoção do Dia">
+            <a href="<?php echo $path; ?>paginas/index.php">
+            <h2>Promoção do Dia</h2>
+        </a>
+        </div>
+    </div>
+</div>
+<div class="sombra"></div>
 
 <script src="../js/navbar.js"></script>
 <script src="../js/darkmode.js"></script>
