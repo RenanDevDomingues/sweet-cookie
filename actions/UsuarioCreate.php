@@ -10,14 +10,15 @@ $endereco = $_POST['endereco'];
 $numero = $_POST['numero'];
 $complemento = $_POST['complemento'];
 $senha = $_POST['senha'];
+$autenticacao = $_POST['autenticacao'];
 
 $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
-$stmt = $conn->prepare("INSERT INTO usuarios (nome, email, cpf, cep, bairro, endereco, numero, complemento, senha) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-$stmt->bind_param("sssssssss", $nome, $email, $cpf, $cep, $bairro, $endereco, $numero, $complemento, $senha_hash);
+$stmt = $conn->prepare("INSERT INTO usuarios (nome, email, cpf, cep, bairro, endereco, numero, complemento, senha, autenticacao) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+$stmt->bind_param("ssssssssss", $nome, $email, $cpf, $cep, $bairro, $endereco, $numero, $complemento, $senha_hash, $autenticacao);
 
 if ($stmt->execute())
 {
-    $stmt = $conn->prepare("SELECT id, nome, senha FROM usuarios WHERE email = ?");
+    $stmt = $conn->prepare("SELECT id, nome, senha, nivel FROM usuarios WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
 

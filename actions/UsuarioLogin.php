@@ -4,7 +4,7 @@ include("../config/conexao.php");
 $email = $_POST['email'];
 $senha = $_POST['senha'];
 
-$stmt = $conn->prepare("SELECT id, nome, senha FROM usuarios WHERE email = ?");
+$stmt = $conn->prepare("SELECT id, nome, senha, nivel FROM usuarios WHERE email = ?");
 $stmt->bind_param("s", $email);
 $stmt->execute();
 
@@ -18,22 +18,29 @@ if ($result->num_rows === 1)
     {
         session_start();
         $_SESSION['usuario'] = $usuario;
-        $_SESSION['logado'] = true;
 
+        if ($usuario['nivel'] == '1') {
+            $_SESSION['logado'] = false;
+            echo "LOGIN_CERTO";
+            exit();
+        }
         
-        header("Location: ../index.php");
-        exit();
+        if ($usuario['nivel'] == '2') {
+            $_SESSION['logado'] = true;
+            echo "LOGIN_MASTER";
+            exit();
+            
+        }
     } 
     else 
     {
-        header("Location: ../paginas/login2.php?erro=senha");
+        echo "ERRO_SENHA";
         exit();
     }
 } 
 else 
 {
-    header("Location: ../paginas/login2.php?erro=email");
+    echo "ERRO_EMAIL";
     exit();
 }
-
 ?>
