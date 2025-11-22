@@ -9,6 +9,11 @@
 </head>
 
 <body>
+
+    <a href="../index.php" id="logo">
+        <img src="../img/Sweet.svg" alt="Sweet Cookies" class="logo">
+    </a>
+
     <div class="cadastro">
         <form action="../actions/UsuarioCreate.php" id="form-cadastrar" method="POST">
             <h2>Cadastro</h2>
@@ -53,6 +58,12 @@
                 <input type="password" name="senha_confirmacao" id="senha_confirmacao" placeholder=" " required>
                 <label for="senha_confirmacao">Confirmar Senha</label>
             </div>
+            
+            <div class="info">
+                <input type="text" name="autenticacao" placeholder=" " required>
+                <label for="nome">Digite Sua Primeira Escola</label>
+            </div>
+
             <div class="submit">
                 <a href="login.php">Você já possui Cadastro?</a>
                 <button id="btn-cadastrar" type="submit">Cadastrar</button>
