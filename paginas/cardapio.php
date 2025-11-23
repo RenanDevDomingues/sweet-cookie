@@ -149,24 +149,10 @@
         </div>
     </section>
     <!-- FOOTER -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-brand">
-                <img src="../img/Sweet.svg" alt="Sweet Cookies">
-                <div class="footer-social">
-                    <a href="https://www.instagram.com/sweetcookies_ofc"><img src="../img/Instagram.png" alt="Instagram"></a>
-                    <a href="#"><img src="../img/WhatsApp.png" alt="WhatsApp"></a>
-                </div>
-                <div class="footer-info">
-                    2025 Sweet cookies. Todos os direitos reservados.
-                </div>
-            </div>
-            <div class="footer-links">
-                <strong>Informações Legais</strong>
-                <a href="#">Política de privacidade</a>
-                <a href="#">Termos de uso</a>
-                <a href="#">Segurança de dados</a>
-            </div>
+    <?php 
+        $path = "../";
+        include("../config/footer.php"); 
+    ?>
             
     <script>
         $(document).ready(function() 
