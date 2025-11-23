@@ -89,6 +89,12 @@ if (isset($_SESSION['carrinho']))
         </div>
         <div class="option">
             <img src="<?php echo $path; ?>img/casa.svg" alt="home">
+            <a href="<?php echo $path; ?>paginas/usuario.php">
+                <h2>Perfil</h2>
+            </a>
+        </div>
+        <div class="option">
+            <img src="<?php echo $path; ?>img/casa.svg" alt="home">
             <a href="<?php echo $path; ?>index.php">
                 <h2>Inicio</h2>
             </a>
