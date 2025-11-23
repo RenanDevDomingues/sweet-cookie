@@ -4,11 +4,12 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 #option:hover {
-color: #ff1100;
+    color: #ff1100;
 }
 
-#close-menu{
+#close-menu {
     color: white;
     text-decoration: white;
 }
@@ -16,10 +17,13 @@ color: #ff1100;
 a {
     text-decoration: none;
 }
+
 a:hover {
     color: #ff1100;
 }
+
 body {
+    overflow-x: hidden;
     font-family: 'Poppins', Arial, sans-serif;
     background-color: #FFF1E1;
     color: #231F20;
@@ -29,35 +33,39 @@ body {
 /* HEADER */
 header {
     background: #C62828;
-    padding: 18px 0;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 2vh 0;
+    box-shadow: 0 2vw 8vw rgba(0, 0, 0, 0.1);
     position: sticky;
 }
 
 .header-content {
     display: flex;
     align-items: center;
-    justify-content: space-between; /* mantém espaçamento entre logo e ações */
-    padding: 0 91px; /* ajuste conforme necessário */
+    justify-content: space-between;
+    /* mantém espaçamento entre logo e ações */
+    padding: 0 4.5vw;
+    /* ajuste conforme necessário */
 }
 
 .logo {
-    margin-right: auto; 
+    margin-right: auto;
     display: block;
-    max-height: 120px; /* ajuste conforme o tamanho do logo */
+    max-height: 5.9vw;
+    /* ajuste conforme o tamanho do logo */
 }
 
 .header-search {
     flex: 1;
-    margin: 15px 300px;
+    margin: 2vh 14.5vw;
     display: flex;
     align-items: center;
 }
 
 .header-search input {
     width: 100%;
-    padding: 14px 16px;
-    border-radius: 8px 0 0 8px;
+    height: 5vh;
+    padding: 0 1vw;
+    border-radius: .5rem 0 0 .5rem;
     border: none;
     font-size: 1rem;
     outline: none;
@@ -66,8 +74,9 @@ header {
 .header-search button {
     background: #fff;
     border: none;
-    border-radius: 0 8px 8px 0;
-    padding: 10px 16px;
+    border-radius: 0 .5rem .5rem 0;
+    height: 5vh;
+    padding: 0 .8vw;
     cursor: pointer;
     font-size: 1.1rem;
     color: #C62828;
@@ -76,51 +85,53 @@ header {
 .header-actions {
     display: flex;
     align-items: center;
-    gap: 24px; /* Espaço entre carrinho e login */
+    gap: 1.2vw;
+    /* Espaço entre carrinho e login */
 }
 
 .darkmode {
     display: flex;
     align-items: center;
-    width: 120px;
-    height: 40px;
+    width: 5.5vw;
+    height: 4.5vh;
     background-color: white;
-    border: 2px solid black;
-    border-radius: 20px;
-    margin-right: 40px;
+    border: .1rem solid black;
+    border-radius: 1.5rem;
+    margin-right: 2vw;
     transition: background-color 0.5s ease-in-out;
 }
 
 .darkmode-toggle {
     display: flex;
-    width: 30px;
-    height: 30px;
+    width: 1.4vw;
+    height: 2.8vh;
     background-color: black;
-    border: 2px black solid;
-    border-radius: 50px;
-    transform: translateX(4px);
+    border: .1rem black solid;
+    border-radius: 3rem;
+    transform: translateX(.25rem);
     transition: transform 0.5s ease-in-out, background-color 0.5s ease-in-out;
 
 }
 
 #dark-mode {
     background-color: rgb(41, 41, 41);
-    border: 2px black solid;
+    border: .1rem black solid;
 }
 
 #dark-toggle {
     background-color: white;
-    border: 2px gray solid;
+    border: .1rem gray solid;
     transition: transform 0.5s ease-in-out, background-color 0.5s ease-in-out;
 }
 
-.header-actions .login, .header-actions .nome-usuario {
+.header-actions .login,
+.header-actions .nome-usuario {
     color: #fff;
     font-size: 1rem;
     text-decoration: none;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: .7vw;
 }
 
 .login .input-login {
@@ -135,8 +146,8 @@ header {
 
 .header-actions .menu-icon {
     background: #C62828;
-    border-radius: 8px;
-    padding: 8px 10px;
+    border-radius: .5rem;
+    padding: .5vh .5vw;
     font-size: 1.5rem;
     color: #C62828;
     border: none;
@@ -151,13 +162,13 @@ header {
 
 .cart-badge {
     position: absolute;
-    top: -8px;
-    right: -8px;
+    top: -.6vh;
+    right: -.5vw;
     background: #ff5a36;
     color: #fff;
     border-radius: 50%;
-    padding: 2px 6px;
-    font-size: 12px;
+    padding: .2vh .32vw;
+    font-size: .75rem;
 }
 
 .nav-menu {
@@ -172,7 +183,7 @@ header {
     width: 20vw;
     height: 90vh;
     background-color: #C1282E;
-    border-bottom-left-radius: 150px;
+    border-bottom-left-radius: 9.5rem;
     transition: transform 0.3s ease-in-out;
     transform: translateX(100%);
 }
@@ -188,8 +199,8 @@ header {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 20px;
-    margin: 10px 0;
+    gap: 5vh;
+    margin: 1.5vh 0;
 }
 
 .nav-menu .menu .option img {
@@ -197,10 +208,11 @@ header {
 }
 
 .nav-menu .menu .option h2 {
-    font-size: 2.0em;
+    font-size: 2.0rem;
     color: white;
-    
+
 }
+
 .nav-menu .menu .option h2:hover {
 
     color: #231F20;
@@ -213,8 +225,12 @@ header {
     background-color: white;
     width: 100%;
     height: 20%;
-    border-radius: 25px;
+    border-radius: 1.8rem;
     margin: 20% 0 0 0;
+}
+
+.nav-menu .menu .promododia h2 {
+    color: black;
 }
 
 .sombra {
@@ -234,7 +250,7 @@ header {
 /* HERO */
 .hero {
     background: url('../img/fundo-header.png') center/cover no-repeat;
-    min-height: 420px;
+    min-height: 25vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -245,26 +261,26 @@ header {
 .hero-overlay {
     background: rgba(255, 255, 255, 0.062);
     backdrop-filter: blur(3px);
-    border-radius: 24px;
-    padding: 48px 32px;
-    max-width: 700px;
-    margin: 48px auto;
+    border-radius: 1.5rem;
+    padding: 5vh 2vw;
+    max-width: 45vw;
+    margin: 5vh auto;
     text-align: center;
-    box-shadow: 0 4px 32px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 .25rem 2rem rgba(0, 0, 0, 0.08);
 }
 
 .hero-overlay img {
     position: absolute;
-    left: -30px;
-    top: -30px;
-    width: 120px;
+    left: -2vw;
+    top: -5vh;
+    width: 7vw;
 }
 
 .hero-overlay h1 {
     font-size: 2.5rem;
     font-weight: 700;
     color: #FFF1E1;
-    margin-bottom: 18px;
+    margin-bottom: 1vh;
 }
 
 .hero-overlay h1 .highlight {
@@ -274,16 +290,16 @@ header {
 .hero-overlay p {
     font-size: 1.2rem;
     color: #fff;
-    margin-bottom: 32px;
-    text-shadow: 0 2px 8px #0002;
+    margin-bottom: 2vh;
+    text-shadow: 0 .1rem .5rem #0002;
 }
 
 .hero-overlay .btn-main {
     background: #C62828;
     color: #fff;
     border: none;
-    border-radius: 32px;
-    padding: 16px 38px;
+    border-radius: 2rem;
+    padding: 1.7vh 2vw;
     font-size: 1.2rem;
     font-weight: 700;
     cursor: pointer;
@@ -297,7 +313,7 @@ header {
 /* SABORES */
 .sabores-section {
     background: transparent;
-    padding: 56px 0 32px 0;
+    padding: 4vh 0 3vh 0;
     position: relative;
 }
 
@@ -321,23 +337,23 @@ header {
     text-align: center;
     font-size: 2.3rem;
     font-weight: 700;
-    margin-bottom: 36px;
+    margin-bottom: 3vh;
 }
 
 .sabores-lista {
     display: flex;
-    gap: 32px;
+    gap: 1.5vw;
     justify-content: center;
     flex-wrap: wrap;
-    margin-bottom: 32px;
+    margin-bottom: 3vh;
 }
 
 .sabor-card {
     background: #fff;
-    border-radius: 18px;
-    box-shadow: 0 2px 16px #0001;
-    width: 320px;
-    padding-bottom: 18px;
+    border-radius: 1.1rem;
+    box-shadow: 0 .1rem 1rem #0001;
+    width: 15.5vw;
+    padding-bottom: 2vh;
     overflow: hidden;
     position: relative;
 }
@@ -350,14 +366,14 @@ header {
 
 .sabor-card .badge {
     position: absolute;
-    top: 16px;
-    left: 16px;
+    top: 1vh;
+    left: .5vw;
     background: #F7C948;
     color: #fff;
     font-size: 0.9rem;
     font-weight: 600;
-    border-radius: 8px;
-    padding: 4px 12px;
+    border-radius: .5rem;
+    padding: .4vh .3vw;
 }
 
 .sabor-card .badge.vegano {
@@ -371,13 +387,13 @@ header {
 .sabor-card h3 {
     font-size: 1.2rem;
     font-weight: 700;
-    margin: 18px 0 6px 18px;
+    margin: 1.5vh 0 .5vh .5vw;
 }
 
 .sabor-card p {
     color: #231F20;
     font-size: 1rem;
-    margin-left: 18px;
+    margin-left: .5vw;
 }
 
 .sabores-section .btn-main {
@@ -386,8 +402,8 @@ header {
     background: #C62828;
     color: #fff;
     border: none;
-    border-radius: 32px;
-    padding: 14px 38px;
+    border-radius: 2rem;
+    padding: 1.5vh 1.2vw;
     font-size: 1.1rem;
     font-weight: 700;
     cursor: pointer;
@@ -401,7 +417,7 @@ header {
 /* PRODUTOS EM DESTAQUE */
 .produtos-destaque {
     background: transparent;
-    padding: 48px 0 32px 0;
+    padding: 0 0 0 0;
     text-align: center;
 }
 
@@ -409,8 +425,8 @@ header {
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    gap: 32px;
-    margin-bottom: 32px;
+    gap: 0;
+    margin-bottom: 0;
 }
 
 .produtos-destaque .produtos-imgs img {
@@ -425,12 +441,13 @@ header {
     background: #C62828;
     color: #fff;
     border: none;
-    border-radius: 32px;
-    padding: 14px 38px;
+    border-radius: 2rem;
+    padding: 1.5vh 1.2vw;
     font-size: 1.1rem;
     font-weight: 700;
     cursor: pointer;
     transition: background 0.2s;
+    margin: 0;
 }
 
 .produtos-destaque .btn-main:hover {
@@ -440,11 +457,12 @@ header {
 /* Monte seu cookie */
 .monte-cookie-section {
     background: #fff8f0;
-    padding: 48px 0;
-    border-radius: 24px;
-    box-shadow: 0 4px 24px rgba(180, 120, 80, 0.08);
-    margin: 40px 0;
+    padding: 3vh 0;
+    border-radius: 1.5rem;
+    box-shadow: 0 .25rem 2rem rgba(180, 120, 80, 0.08);
+    margin: 4vh 0;
 }
+
 .monte-cookie-section h2 {
     text-align: center;
     font-size: 2.2rem;
@@ -452,88 +470,100 @@ header {
     margin-bottom: 32px;
     font-weight: 700;
 }
+
 .monte-cookie-content {
     display: flex;
-    gap: 48px;
+    gap: 2vw;
     justify-content: center;
     align-items: flex-start;
     flex-wrap: wrap;
 }
+
 .cookie-preview {
     background: #fff;
-    border-radius: 16px;
-    box-shadow: 0 2px 12px rgba(160, 82, 45, 0.07);
-    padding: 32px;
+    border-radius: 1rem;
+    box-shadow: 0 .1rem .8rem rgba(160, 82, 45, 0.07);
+    padding: 2vh;
     text-align: center;
-    min-width: 260px;
+    min-width: 15vw;
 }
+
 .cookie-preview img {
-    width: 120px;
-    margin-top: 16px;
+    width: 6vw;
+    margin-top: 1vh;
     border-radius: 50%;
-    box-shadow: 0 2px 8px rgba(160, 82, 45, 0.12);
+    box-shadow: 0 .1rem .5rem rgba(160, 82, 45, 0.12);
 }
+
 .cookie-form {
     background: #fff;
-    border-radius: 16px;
-    box-shadow: 0 2px 12px rgba(160, 82, 45, 0.07);
-    padding: 32px;
-    min-width: 320px;
+    border-radius: 1rem;
+    box-shadow: 0 .1rem .8rem rgba(160, 82, 45, 0.07);
+    padding: 2vh;
+    min-width: 28vw;
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 2vh;
 }
+
 .cookie-form label {
     font-weight: 600;
     color: #C62828;
-    margin-bottom: 8px;
+    margin-bottom: 0;
 }
+
 .opcoes {
     display: flex;
-    gap: 12px;
-    margin-bottom: 12px;
+    gap: 1vw;
+    margin-bottom: 0;
 }
+
 .opcao-btn {
     background: #fbeee6;
     border: 2px solid #C62828;
     color: #C62828;
     border-radius: 8px;
-    padding: 8px 18px;
+    padding: 1vh 2vh;
     font-size: 1rem;
     cursor: pointer;
     transition: background 0.2s, color 0.2s;
 }
+
 .opcao-btn.selected,
 .opcao-btn:active {
     background: #C62828;
     color: #fff;
     border-color: #C62828;
 }
+
 .checkbox-group {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
-    margin-bottom: 12px;
+    gap: 1vw;
+    margin-bottom: 0;
 }
+
 .checkbox-group label {
     background: #fbeee6;
-    border-radius: 8px;
-    padding: 6px 14px;
+    border-radius: .5rem;
+    padding: 1vh .5vw;
     cursor: pointer;
     font-weight: 500;
 }
+
 .btn-main {
     background: #C62828;
     color: #fff;
     border: none;
-    border-radius: 8px;
-    padding: 12px 24px;
+    border-radius: .5rem;
+    padding: 1.5vh 1.2vw;
     font-size: 1.1rem;
     cursor: pointer;
     font-weight: 700;
-    margin-top: 18px;
+    margin-top: 0;
     transition: background 0.2s;
 }
+
 .btn-main:hover {
     background: #d2691e;
 }
@@ -546,42 +576,43 @@ header {
     margin-left: 50%;
     transform: translateX(-50%);
     display: block;
-    
+
 }
+
 /* FEEDBACKS */
 .feedbacks-section {
     background: transparent;
-    padding: 56px 0 32px 0;
+    padding: 4vh 0;
     position: relative;
 }
 
 
 
 .feedbacks-section .feedbacks-bar img {
-    height: 54px;
+    height: 5vh;
 }
 
 .feedbacks-section h2 {
     text-align: center;
     font-size: 2.3rem;
     font-weight: 700;
-    margin-bottom: 36px;
+    margin-bottom: 4vh;
 }
 
 .feedbacks-lista {
     display: flex;
-    gap: 32px;
+    gap: 2vw;
     justify-content: center;
     flex-wrap: wrap;
-    margin-bottom: 24px;
+    margin-bottom: 3vh;
 }
 
 .feedback-card {
     background: transparent;
-    border: 6px solid #C62828;
-    border-radius: 16px;
-    width: 260px;
-    height: 160px;
+    border: .4rem solid #C62828;
+    border-radius: 1rem;
+    width: 12.5vw;
+    height: 16.5vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -591,17 +622,17 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 12px;
+    gap: .5vw;
 }
 
 .carousel-dot {
-    width: 16px;
-    height: 16px;
+    width: 1vw;
+    height: 1vw;
     border-radius: 50%;
     background: #C62828;
     opacity: 0.3;
     border: none;
-    margin: 0 2px;
+    margin: 0 .1rem;
     cursor: pointer;
 }
 
@@ -622,7 +653,7 @@ footer {
     position: relative;
     background: #C62828;
     color: #fff;
-    padding: 24px 0 8px 0;
+    padding: 2vh 0 1vh 0;
     margin-top: 0;
     overflow: hidden;
 }
@@ -632,7 +663,8 @@ footer::before {
     position: absolute;
     inset: 0;
     background: url('../img/fundo-footer.png') center/cover no-repeat;
-    opacity: 0.25; /* ajuste a opacidade como quiser */
+    opacity: 0.25;
+    /* ajuste a opacidade como quiser */
     z-index: 0;
 }
 
@@ -645,25 +677,25 @@ footer::before {
     width: 100%;
     max-width: 100vw;
     margin: 0;
-    padding: 0 24px;
+    padding: 0 1vw;
     box-sizing: border-box;
 }
 
 .footer-brand {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 1.5vh;
     align-items: flex-start;
 }
 
 .footer-brand img {
-    height: 54px;
+    height: 6vh;
 }
 
 .footer-social {
     display: flex;
-    gap: 16px;
-    margin-top: 8px;
+    gap: 1vw;
+    margin-top: 0;
 }
 
 .footer-social a {
@@ -671,7 +703,7 @@ footer::before {
     font-size: 1.6rem;
     background: #fff0;
     border-radius: 50%;
-    padding: 4px;
+    padding: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -679,28 +711,28 @@ footer::before {
 }
 
 .footer-social a img {
-    width: 32px;
-    height: 32px;
+    width: 1.5vw;
+    height: 1.5vw;
     display: block;
 }
 
 .footer-info {
     font-size: 1rem;
     font-weight: 700;
-    margin-top: 8px;
+    margin-top: 0;
 }
 
 .footer-links {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 1vh;
     align-items: flex-end;
-    margin-top: 8px;
+    margin-top: 0;
 }
 
 .footer-links strong {
     font-size: 1.08rem;
-    margin-bottom: 2px;
+    margin-bottom: 0;
 }
 
 .footer-links a {
@@ -714,7 +746,7 @@ footer::before {
     text-decoration: underline;
 }
 
-@media (max-width: 700px) {
+/* @media (max-width: 700px) {
     .footer-content {
         flex-direction: column;
         align-items: center;
@@ -727,7 +759,7 @@ footer::before {
     }
 }
 
-/* BG COOKIES */
+/* BG COOKIES 
 .bg-cookies {
     position: fixed;
     top: 0;
@@ -741,7 +773,7 @@ footer::before {
     opacity: 0.18;
 }
 
-/* RESPONSIVO */
+/* RESPONSIVO 
 @media (max-width: 900px) {
 
     .sabores-lista,
@@ -775,20 +807,22 @@ footer::before {
     .feedback-card {
         width: 90vw;
         max-width: 350px;
-     }
     }
+}
 
 .user-logout {
-  display: flex;
-  align-items: center;
-  gap: 2px; /* Espaço entre ícone e texto */
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    /* Espaço entre ícone e texto 
 }
 
 .logout-link {
-  color: #fff;
-  text-decoration: none;
-  font-size: 1rem;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
 }
+
 .logout-link:hover {
-  color: #ff1100;
-}
+    color: #ff1100;
+} */
