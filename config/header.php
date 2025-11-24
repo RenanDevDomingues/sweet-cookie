@@ -27,10 +27,9 @@ if (isset($_SESSION['carrinho']))
     }
 }
 ?>
-
-<link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700,800&display=swap" rel="stylesheet">
-
+<link rel="stylesheet" href="<?php echo $path; ?>css/style.css">
 <header>
+    
     <div class="header-content">
         <a href="<?php echo $path; ?>index.php">
             <img src="<?php echo $path; ?>img/Sweet.svg" alt="Sweet Cookies" class="logo">
@@ -115,7 +114,7 @@ if (isset($_SESSION['carrinho']))
         </div>
         <div class="promododia">
             <img src="<?php echo $path; ?>img/navbar-hero.svg" alt="Promoção do Dia">
-            <a href="<?php echo $path; ?>paginas/index.php">
+            <a href="<?php echo $path; ?>index.php">
             <h2>Promoção do Dia</h2>
         </a>
         </div>
@@ -123,6 +122,6 @@ if (isset($_SESSION['carrinho']))
 </div>
 <div class="sombra"></div>
 
-<script src="../js/navbar.js"></script>
-<script src="../js/darkmode.js"></script>
+<script src="<?php echo $path; ?>js/navbar.js"></script>
+<script src="<?php echo $path; ?>js/darkmode.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>

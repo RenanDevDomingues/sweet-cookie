@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sweet Cookies</title>
     <link rel="stylesheet" href="./css/style.css">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/responsive.css">
 </head>
 
 <body>
@@ -23,8 +23,6 @@
         include("config/header.php"); 
     ?>
     
-
-
     <!-- HERO -->
     <section class="hero">
         <div class="hero-overlay">
@@ -142,62 +140,10 @@
         </section>
 
         <!-- FOOTER -->
-        <footer>
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <img src="img/Sweet.svg" alt="Sweet Cookies">
-                    <div class="footer-social">
-                        <a href="https://www.instagram.com/sweetcookies_ofc" target="_blank"><img src="img/Instagram.png" alt="Instagram"></a>
-                        <a href="#"><img src="img/WhatsApp.png" alt="WhatsApp" target="_blank"></a>
-                    </div>
-                    <div class="footer-info">
-                        2025 Sweet cookies. Todos os direitos reservados.
-                    </div>
-                </div>
-                <div class="footer-links">
-                    <strong>Informações Legais</strong>
-                    <a href="#">Política de privacidade</a>
-                    <a href="#">Termos de uso</a>
-                    <a href="#">Segurança de dados</a>
-                </div>
-            </div>
-        </footer>
-        <script>
-            // Fecha o menu ao clicar fora dele
-            //document.addEventListener('click', function (e) {
-            //if (
-            //mobileMenu.classList.contains('active') &&
-            //!mobileMenu.contains(e.target) &&
-            //!menuBtn.contains(e.target)
-            //) {
-            //mobileMenu.classList.remove('active');
-            //}
-            //});
-
-            // Massa
-            //document.querySelectorAll('.cookie-form .opcoes:first-of-type .opcao-btn').forEach(btn => {
-            //btn.addEventListener('click', function () {
-            //document.querySelectorAll('.cookie-form .opcoes:first-of-type .opcao-btn').forEach(b => b.classList.remove('selected'));
-            //btn.classList.add('selected');
-            //});
-            //});
-
-            // Tamanho
-            //document.querySelectorAll('.cookie-form .opcoes:last-of-type .opcao-btn').forEach(btn => {
-            //btn.addEventListener('click', function () {
-            //document.querySelectorAll('.cookie-form .opcoes:last-of-type .opcao-btn').forEach(b => b.classList.remove('selected'));
-            //btn.classList.add('selected');
-            //});
-            //});
-
-            // Form submit
-            //document.querySelector('.cookie-form').addEventListener('submit', function (e) {
-            //e.preventDefault();
-            //alert('Seu cookie foi personalizado!'); // Troque por lógica real se quiser
-            //});
-        </script>
-        <script src="js/darkmode.js"></script>
-        <script src="js/navbar.js"></script>
+        <?php 
+            $path = "";
+            include("config/footer.php"); 
+        ?>
 </body>
 
 </html>

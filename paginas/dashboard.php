@@ -77,8 +77,9 @@ $total_usuarios = $conn->query('SELECT COUNT(*) FROM usuarios')->fetch_row()[0];
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Dashboard | Sweet Cookies</title>
-	<link rel="stylesheet" href="../css/dashboard.css">
 	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="../css/dashboard.css">
+	<link rel="stylesheet" href="../css/responsive.css">
 </head>
 <body>
 	<div class="dashboard-header">
@@ -202,7 +203,9 @@ $total_usuarios = $conn->query('SELECT COUNT(*) FROM usuarios')->fetch_row()[0];
 				</table>
 			</section>
 			<section id="tab-produtos" style="display:none;">
-				<h2 style="color:#bdbdbd; font-size:1.3rem; margin-bottom:18px;"><i class="fa fa-cube"></i> Produtos</h2>
+				<h2 style="color:#bdbdbd; font-size:1.3rem; margin-bottom:18px;"><i class="fa fa-cube"></i> Produtos
+					<a href="produto-cadastro.php" class="btn-main" style="display:inline-block; margin-left:12px; background:#red; color:#fff; padding:.4rem .6rem; border-radius:6px; text-decoration:none; font-size:0.9rem;">Adicionar produto</a>
+				</h2>
 				<?php
 				// Consulta produtos reais
 				$produtos = mysqli_query($conn, "SELECT id, nome, categoria, preco FROM produtos LIMIT 10");

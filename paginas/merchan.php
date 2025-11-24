@@ -12,8 +12,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kits e Presentes | Sweet Cookies</title>
+    <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/cardapio.css">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/responsive.css">
 </head>
 <body>
     <?php 
@@ -175,26 +176,10 @@
         </div>
     </section>
     <!-- FOOTER -->
-    <footer>
-    <div class="footer-content">
-        <div class="footer-brand">
-            <img src="../img/Sweet.svg" alt="Sweet Cookies">
-            <div class="footer-social">
-                <a href="https://www.instagram.com/sweetcookies_ofc" target="_blank"><img src="../img/Instagram.png" alt="Instagram"></a>
-                <a href="#" target="_blank"><img src="../img/WhatsApp.png" alt="WhatsApp"></a>
-            </div>
-            <div class="footer-info">
-                2025 Sweet cookies. Todos os direitos reservados.
-            </div>
-        </div>
-        <div class="footer-links">
-            <strong>Informações Legais</strong>
-            <a href="#">Política de privacidade</a>
-            <a href="#">Termos de uso</a>
-            <a href="#">Segurança de dados</a>
-        </div>
-  <script src="../js/navbar.js"></script>
-  <script src="../js/darkmode.js"></script>
+    <?php 
+        $path = "../";
+        include("../config/footer.php"); 
+    ?>
 </body>
 
 </html>

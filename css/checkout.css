@@ -1,359 +1,265 @@
-/* ============================
-   RESET / GLOBAL
-   ============================ */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* =========================
+   RESET BÁSICO / PADRÃO
+========================= */
+
+.checkout-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 40px;
+    padding: 0 20px;
+    font-family: "Poppins", sans-serif;
 }
 
-:root {
-    --border-dark: 3px solid #000;
-    --border-light: 2px solid #000;
+/* =========================
+   FORMULÁRIOS (ESQUERDA)
+========================= */
 
-    --radius: 20px;
-    --radius-small: 10px;
-
-    --transition-fast: .2s ease;
-    --transition-medium: .35s ease;
-
-    --label-size: 1.4rem;
-    --label-small: 1rem;
-
-    --highlight: 8px double #000;
-}
-
-body {
-    width: 100vw;
-    height: 100vh;
-    font-family: Arial, sans-serif;
-    background-color: #FFF1E1;
-}
-
-main {
-    width: 100%;
-    height: 100%;
-    padding: 20px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5%;
-}
-
-
-header {
-    position: absolute;
-    top: 3%;
-    left: 3%;
-    height: 50px;
-    width: 100px;
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid black;
-    border-top-left-radius: 25px;
-    border-bottom-left-radius: 25px;
-}
-
-header button {
-    border: none;
-    background-color: transparent;
-    height: 100%;
-    width: 100%;
-    font-size: 2.0em;
-    cursor: pointer;
-}
-
-/* ============================
-   CARD DA ESQUERDA
-   ============================ */
-main .input {
-    width: 55%;
-    border: var(--border-dark);
-    border-radius: var(--radius);
-    padding: 30px;
-    background: #fff;
-
+.checkout-form {
     display: flex;
     flex-direction: column;
     gap: 30px;
 }
 
-/* ============================
-   SEÇÃO — TITULOS
-   ============================ */
-main .input h2 {
-    font-size: 2.2rem;
-    margin-bottom: 15px;
+.form-box {
+    background: #fff;
+    padding: 25px 30px;
+    border-radius: 16px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
 }
 
-/* ============================
-   INPUT COM LABEL FLUTUANTE
-   ============================ */
+.form-box h2 {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    color: #333;
+}
 
-.contato,
-.local {
-    width: 100%;
-    padding-bottom: 25px;
-    border-bottom: var(--highlight);
+/* INPUT COM LABEL FLOTANTE */
+.input-group {
     position: relative;
+    margin-bottom: 20px;
 }
 
-.contato input,
-.local input {
+.input-group input {
     width: 100%;
-    font-size: 1.6rem;
-    padding: 12px 10px;
-
-    border: var(--border-light);
-    border-radius: var(--radius-small);
+    padding: 14px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    font-size: 1rem;
     outline: none;
-
-    transition: var(--transition-medium);
+    transition: .2s;
+    background: transparent;
 }
 
-.contato label {
+.input-group input:focus {
+    border-color: #C62828;
+}
+
+.input-group label {
     position: absolute;
-    left: 12px;
-    bottom: 44%;
-
-    font-size: var(--label-size);
-    background: white;
-    padding: 0 5px;
-
+    top: 50%;
+    left: 16px;
+    transform: translateY(-50%);
+    background: #fff;
+    padding: 0 6px;
+    color: #777;
     pointer-events: none;
-    transition: var(--transition-fast);
+    transition: .2s;
 }
 
-.local label {
-    position: absolute;
-    left: 12px;
-    bottom: 51%;
-
-    font-size: var(--label-size);
-    padding: 0 5px;
-
-    pointer-events: none;
-    transition: var(--transition-fast);
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label {
+    top: -6px;
+    font-size: 0.75rem;
+    color: #C62828;
 }
 
-/* Quando o input está preenchido ou focado */
-.contato input:focus + label,
-.contato input:not(:placeholder-shown) + label {
-    bottom: 60%;
-    font-size: var(--label-small);
-    color: #666;
-}
-
-.contato input:focus,
-.contato input:not(:placeholder-shown) {
-    padding-top: 3%;
-}
-
-.local input:focus + label,
-.local input:not(:placeholder-shown) + label {
-    bottom: 65%;
-    font-size: var(--label-small);
-    color: #666;
-}
-
-.local input:focus, .local input:not(:placeholder-shown) {
-    padding-top: 3%;
-}
-
-/* ============================
-   CHECKBOX
-   ============================ */
-.contato .checkbox {
-    margin-top: 10px;
-
+/* CHECKBOX */
+.checkbox {
     display: flex;
     align-items: center;
+    gap: 8px;
+    font-size: .95rem;
+    color: #555;
+}
+
+.checkbox input {
+    transform: scale(1.2);
+}
+
+/* =========================
+   PAGAMENTO
+========================= */
+
+.forma {
+    display: flex;
+    gap: 15px;
+}
+
+.pag-option {
+    width: 80px;
+    height: 80px;
+    background: #fafafa;
+    border: 2px solid #ddd;
+    border-radius: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.pag-option img {
+    width: 45px;
+}
+
+.pag-option:hover {
+    border-color: #C62828;
+    background: #fff0f6;
+}
+
+.pag-option.active {
+    border-color: #C62828;
+    background: #ffe1ec;
+}
+
+/* =========================
+   BOTÃO DE CEP
+========================= */
+
+.btn-enviar-cep {
+    margin-top: 5px;
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    background: #C62828;
+    border: none;
+    border-radius: 12px;
+    color: #fff;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.btn-enviar-cep:hover {
+    background: #E53935;
+}
+
+/* =========================
+   RESUMO (DIREITA)
+========================= */
+
+.checkout-summary {
+    background: #fff;
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    height: fit-content;
+    position: sticky;
+    top: 20px;
+}
+
+.checkout-summary h1 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Valores */
+.valor {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.original, .des_total {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.lista p {
+    font-size: 0.9rem;
+    color: #666;
+    margin: 2px 0;
+}
+
+/* TOTAL */
+.total {
+    display: flex;
+    flex-direction: column;
     gap: 10px;
 }
 
-.contato .checkbox input {
-    width: 25px;
-    height: 25px;
+.total p {
+    font-size: 1.2rem;
 }
 
-/* ============================
-   PAGAMENTO
-   ============================ */
+.total span {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #C62828;
+}
 
-.pagamento {
+.btn-finalizar {
     width: 100%;
-    padding-bottom: 25px;
-    border-bottom: var(--highlight);
-}
-
-.pagamento .forma {
-    width: 100%;
-
-    display: flex;
-    justify-content: center;
-    gap: 5%;
-}
-
-.pagamento .forma > div {
-    width: 15%;
-    height: 90px;
-
-    border: var(--border-dark);
-    border-radius: var(--radius-small);
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
+    padding: 14px;
+    background: #C62828;
+    border: none;
+    border-radius: 12px;
+    color: #fff;
+    font-size: 1.1rem;
     cursor: pointer;
-    transition: var(--transition-fast);
+    transition: .2s;
 }
 
-.pagamento .forma > div:hover {
-    background: #f0f0f0;
+.btn-finalizar:hover {
+    background: #E53935;
 }
 
-.pagamento .forma div img {
-    height: 60%;
-    width: 40%;
-}
+/* =========================
+   OVERLAYS
+========================= */
 
 .escuro {
-    position: absolute;
     display: none;
-    background-color: rgb(0, 0, 0, 0.5);
-    height: 100vh;
-    width: 100vw;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 5;
 }
 
 .infopagamento {
-    position: absolute;
     display: none;
-    justify-self: center;
-    align-self: center;
-    height: 70%;
-    width: 50%;
-    background-color: white;
-    border: 2px solid black;
-    border-radius: 15px;
-    z-index: 2;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    width: 350px;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+    z-index: 6;
 }
 
-/* ============================
-   BOTÃO DO CEP
-   ============================ */
-.local button {
-    margin-top: 15px;
-    margin-left: 85%;
-    width: 120px;
-    padding: 10px;
-    font-size: 1.3rem;
-
-    border: var(--border-dark);
-    border-radius: var(--radius-small);
-    background: white;
-    cursor: pointer;
-
-    transition: var(--transition-fast);
-}
-
-.local button:hover {
-    background: #f7f7f7;
-}
-
-/* ============================
-   CARD DA DIREITA (Resumo)
-   ============================ */
-/* Check */
-
-main .check {
-    width: 30%;
-    height: 50%;
-    padding: 1%;
-    background-color: white;
-    border: 2px solid black;
-    border-radius: 25px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-main .check .valor {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: 100%;
-    border: 1px solid black;
-    gap: 5px;
-}
-
-.valor .original {
-    display: flex;
-    flex-direction: row;
-    text-indent: 15px;
-}
-.valor .desconto {
-    display: flex;
-    flex-direction: column;
-}
-
-.valor .desconto .des_total {
-    display: flex;
-    flex-direction: row;
-    text-indent: 15px;
-}
-
-.lista {
-    display: flex;
-    flex-direction: column;
-    justify-self: center;
-    align-self: center;
-    height: 100%;
-    min-height: 140px;
-    width: 95%;
-    border: 2px solid black;
-    overflow-y: auto;  /* Scroll vertical */
-    overflow-x: hidden; /* opcional */
-}
-
-main .check .total {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    margin-top: 15px;
-}
-
-.check .total p, .check .total span {
-    font-size: 2.0em;
-}
-
-.check .total button {
-    border: 2px solid darkred;
-    border-radius: 10px;
-    background-color: #C62828;
-    color: white;
-    font-size: 1.5em;
-    font-weight: bold;
-    padding: 5px 10px;
-}
-
-/* ============================
+/* =========================
    RESPONSIVO
-   ============================ */
+========================= */
+
 @media (max-width: 900px) {
-    main {
-        flex-direction: column;
-        align-items: center;
+    .checkout-container {
+        grid-template-columns: 1fr;
     }
 
-    main .input,
-    .check {
-        width: 90%;
+    .checkout-summary {
+        position: relative;
+        top: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .forma {
+        flex-wrap: wrap;
     }
 }
