@@ -495,6 +495,11 @@ header {
     color: #fff;
 }
 
+.cookie-form .opcao-btn.opcao-btn:has(input[type='radio']:checked) {
+    background: #C62828;
+    color: #fff;
+}
+
 .cookie-form .checkbox-group {
     display: flex;
     gap: 18px;

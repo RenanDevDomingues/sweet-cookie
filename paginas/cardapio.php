@@ -1,20 +1,19 @@
-<?php 
-    session_start();
-    if (empty($_SESSION['logado'])) 
-    {
-        header("Location: login.php");
-        exit;
-    }
+<?php
+session_start();
+if (empty($_SESSION['logado'])) {
+    header("Location: login.php");
+    exit;
+}
 
-    $usuario = $_SESSION['usuario'];
+$usuario = $_SESSION['usuario'];
 
-    include("../config/conexao.php");
+include("../config/conexao.php");
 
-    $sql = "SELECT * FROM produtos WHERE tipo = 'cookie_doce' ORDER BY id";
-    $result_doce = $conn->query($sql);
+$sql = "SELECT * FROM produtos WHERE tipo = 'cookie_doce' ORDER BY id";
+$result_doce = $conn->query($sql);
 
-    $sql = "SELECT * FROM produtos WHERE tipo = 'cookie_salgado' ORDER BY id";
-    $result_salgado = $conn->query($sql);
+$sql = "SELECT * FROM produtos WHERE tipo = 'cookie_salgado' ORDER BY id";
+$result_salgado = $conn->query($sql);
 ?>
 
 <!DOCTYPE html>
@@ -30,10 +29,10 @@
 </head>
 
 <body>
-    <?php 
-        include("../config/header.php"); 
+    <?php
+    include("../config/header.php");
     ?>
-    
+
     <!-- CARDÁPIO -->
     <section class="cardapio-section">
         <h2>Nossos Cookies Doces Especiais</h2>
@@ -42,18 +41,18 @@
             <?php while ($produto = $result_doce->fetch_assoc()): ?>
 
                 <?php
-                    $quantidade_atual = 0;
+                $quantidade_atual = 0;
 
-                    if (isset($_SESSION['carrinho']) && isset($_SESSION['carrinho'][$produto['id']])){
-                        $quantidade_atual = $_SESSION['carrinho'][$produto['id']]['quantidade'];
-                    }
+                if (isset($_SESSION['carrinho']) && isset($_SESSION['carrinho'][$produto['id']])) {
+                    $quantidade_atual = $_SESSION['carrinho'][$produto['id']]['quantidade'];
+                }
                 ?>
 
                 <div class="cardapio-card">
                     <div class="cardapio-img-area">
-                        <img src="../uploads/produtos/<?php echo $produto['imagem']; ?>" 
+                        <img src="../uploads/produtos/<?php echo $produto['imagem']; ?>"
                             alt="<?php echo $produto['nome']; ?>">
-                        
+
                         <span class="badge bg-pink">Doce</span>
                     </div>
 
@@ -62,12 +61,12 @@
                     <span class="preco">
                         R$ <?php echo number_format($produto['preco'], 2, ',', '.'); ?>
                     </span>
-                    
+
                     <div class="qty-control" data-id="<?= $produto['id'] ?>">
                         <button class="qty-btn qty-minus">−</button>
-                        
+
                         <span class="qty-value"><?php echo $quantidade_atual; ?></span>
-                        
+
                         <button class="qty-btn qty-plus">+</button>
                     </div>
 
@@ -85,13 +84,29 @@
                 <p>Visualize seu cookie aqui</p>
                 <img src="../img/choco-belga.png" alt="Cookie Preview">
             </div>
-            <form class="cookie-form">
+            <form method='POST' class="cookie-form">
                 <label>Escolha sua massa</label>
                 <div class="opcoes">
-                    <button type="button" class="opcao-btn selected">Clássica</button>
+                    <div class="opcao-btn">
+                        <input type="radio" name="massa" value="chocolate" hidden>
+                        <p>Chocolate</p>
+                    </div>
+                    <div class="opcao-btn">
+                        <input type="radio" name="massa" value="doce de leite" hidden>
+                        <p>Doce de Leite</p>
+                    </div>
+                    <div class="opcao-btn">
+                        <input type="radio" name="massa" value="Nutella" hidden>
+                        <p>Nutella</p>
+                    </div>
+                    <div class="opcao-btn">
+                        <input type="radio" name="massa" value="Goiabada" hidden>
+                        <p>Goiabada</p>
+                    </div>
+                    <!-- <button type="button" class="opcao-btn selected">Clássica</button>
                     <button type="button" class="opcao-btn">Integral</button>
                     <button type="button" class="opcao-btn">Sem Glúten</button>
-                    <button type="button" class="opcao-btn">Vegana</button>
+                    <button type="button" class="opcao-btn">Vegana</button> -->
                 </div>
                 <label>Escolha seu recheio</label>
                 <div class="checkbox-group">
@@ -102,10 +117,26 @@
                 </div>
                 <label>Escolha o tamanho</label>
                 <div class="opcoes">
-                    <button type="button" class="opcao-btn">Pequeno</button>
+                    <div class="opcao-btn">
+                        <input type="radio" name="tamanho" value="pequeno" hidden>
+                        <p>Pequeno</p>
+                    </div>
+                    <div class="opcao-btn">
+                        <input type="radio" name="tamanho" value="medio" hidden>
+                        <p>Médio</p>
+                    </div>
+                    <div class="opcao-btn">
+                        <input type="radio" name="tamanho" value="grande" hidden>
+                        <p>Grande</p>
+                    </div>
+                    <div class="opcao-btn">
+                        <input type="radio" name="tamanho" value="gigante" hidden>
+                        <p>Gigante</p>
+                    </div>
+                    <!-- <button type="button" class="opcao-btn">Pequeno</button>
                     <button type="button" class="opcao-btn selected">Médio</button>
                     <button type="button" class="opcao-btn">Grande</button>
-                    <button type="button" class="opcao-btn">Gigante</button>
+                    <button type="button" class="opcao-btn">Gigante</button> -->
                 </div>
                 <button class="btn-main" type="submit">Escolha sua massa</button>
             </form>
@@ -119,18 +150,18 @@
             <?php while ($produto = $result_salgado->fetch_assoc()): ?>
 
                 <?php
-                    $quantidade_atual = 0;
+                $quantidade_atual = 0;
 
-                    if (isset($_SESSION['carrinho']) && isset($_SESSION['carrinho'][$produto['id']])){
-                        $quantidade_atual = $_SESSION['carrinho'][$produto['id']]['quantidade'];
-                    }
+                if (isset($_SESSION['carrinho']) && isset($_SESSION['carrinho'][$produto['id']])) {
+                    $quantidade_atual = $_SESSION['carrinho'][$produto['id']]['quantidade'];
+                }
                 ?>
 
                 <div class="cardapio-card">
                     <div class="cardapio-img-area">
-                        <img src="../uploads/produtos/<?php echo $produto['imagem']; ?>" 
+                        <img src="../uploads/produtos/<?php echo $produto['imagem']; ?>"
                             alt="<?php echo $produto['nome']; ?>">
-                        
+
                         <span class="badge bg-orange">Salgado</span>
                     </div>
 
@@ -151,16 +182,25 @@
         </div>
     </section>
     <!-- FOOTER -->
-    <?php 
-        $path = "../";
-        include("../config/footer.php"); 
+    <?php
+    $path = "../";
+    include("../config/footer.php");
     ?>
-            
+
     <script>
-        $(document).ready(function() 
-        {
-            function updateCart(productId, action, $container) 
-            {
+        addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.opcoes .opcao-btn').forEach(btn => {
+                btn.addEventListener('click', teste)
+            })
+        })
+
+        function teste(event) {
+            const choice = event.currentTarget
+            choice.querySelector('input').checked = true
+        }
+
+        $(document).ready(function() {
+            function updateCart(productId, action, $container) {
                 $.ajax({
                     url: '../actions/CarrinhoAdd.php',
                     method: 'POST',
@@ -169,42 +209,38 @@
                         id: productId,
                         action: action
                     },
-                    success: function(data) 
-                    {
-                        if (data.status === 'success') 
-                        {
+                    success: function(data) {
+                        if (data.status === 'success') {
                             $('.cart-badge').text(data.cart_count);
 
                             $container.find('.qty-value').text(data.item_quantity);
-                        } 
-                        else{
+                        } else {
                             alert(data.message);
                         }
                     },
-                    error: function(){
+                    error: function() {
                         alert('Erro ao comunicar com o servidor.');
                     }
                 });
             }
 
-            $('.qty-plus').on('click', function() 
-            {
+            $('.qty-plus').on('click', function() {
                 let $container = $(this).closest('.qty-control');
                 let id = $container.data('id');
                 updateCart(id, 'add', $container);
             });
 
-            $('.qty-minus').on('click', function() 
-            {
+            $('.qty-minus').on('click', function() {
                 let $container = $(this).closest('.qty-control');
                 let id = $container.data('id');
                 let currentQty = parseInt($container.find('.qty-value').text());
 
-                if (currentQty > 0){
+                if (currentQty > 0) {
                     updateCart(id, 'remove', $container);
                 }
             });
         });
     </script>
 </body>
+
 </html>
