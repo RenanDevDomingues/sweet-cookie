@@ -1,7 +1,7 @@
 <?php
 $host = "localhost";
 $usuario = "root";
-$senha = "";
+$senha = "password";
 $banco = "sweet_cookie";
 
 $conn = new mysqli($host, $usuario, $senha, $banco);

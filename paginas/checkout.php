@@ -2,16 +2,11 @@
 session_start();
 $usuario = $_SESSION['usuario'] ?? null;
 
-/* ============================
-   PREPARA DADOS DO CARRINHO
-============================= */
-
 $itens_carrinho_view = [];
 $total_carrinho = 0;
 
 if (!empty($_SESSION['carrinho'])) {
     foreach ($_SESSION['carrinho'] as $id_produto => $item) {
-
         $quantidade      = $item['quantidade'];
         $preco_unitario  = $item['preco'];
         $sub_total_item  = $preco_unitario * $quantidade;
@@ -44,7 +39,8 @@ function formatarMoeda($valor)
 
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/checkout.css">
-        <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/carrinho.css"> 
 </head>
 
 <body>
@@ -55,27 +51,17 @@ function formatarMoeda($valor)
 
     <main class="checkout-container">
 
-        <!-- =====================================
-             FORMULÁRIO DE CONTATO / PAGAMENTO
-        ====================================== -->
         <section class="checkout-form">
 
-            <!-- CONTATO -->
             <div class="form-box">
                 <h2>Contato</h2>
 
                 <div class="input-group">
-                    <input type="email" name="email" id="email">
+                    <input type="email" name="email" id="email" value="<?= $usuario['email'] ?? '' ?>" required>
                     <label for="email">E-mail</label>
                 </div>
-
-                <label class="checkbox">
-                    <input type="checkbox" id="ofertas">
-                    <span>Receber ofertas por e-mail</span>
-                </label>
             </div>
 
-            <!-- PAGAMENTO -->
             <div class="form-box">
                 <h2>Pagamento</h2>
 
@@ -99,25 +85,55 @@ function formatarMoeda($valor)
                 <div class="info-pagamento"></div>
             </div>
 
-            <!-- ENDEREÇO / LOCAL -->
             <div class="form-box">
-                <h2>Local</h2>
+                <h2>Local de Entrega</h2>
 
                 <div class="input-group">
-                    <input type="text" name="cep" id="cep">
+                    <input type="text" name="cep" id="cep" maxlength="9" placeholder=" " required>
                     <label for="cep">CEP</label>
                 </div>
 
-                <button class="btn-enviar-cep">Buscar Endereço</button>
+                <button class="btn-enviar-cep" type="button" id="buscar-cep">Buscar Endereço</button>
 
-                <div class="endereco-info"></div>
+                <div id="campos-endereco" style="margin-top: 20px;">
+                    
+                    <div class="input-group">
+                        <input type="text" name="logradouro" id="logradouro" placeholder=" " required>
+                        <label for="logradouro">Endereço (Rua/Av)</label>
+                    </div>
+
+                    <div style="display: flex; gap: 15px;">
+                        <div class="input-group" style="flex: 1;">
+                            <input type="text" name="numero" id="numero" placeholder=" " required>
+                            <label for="numero">Número</label>
+                        </div>
+                        <div class="input-group" style="flex: 2;">
+                            <input type="text" name="complemento" id="complemento" placeholder=" ">
+                            <label for="complemento">Complemento</label>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="text" name="bairro" id="bairro" placeholder=" " required>
+                        <label for="bairro">Bairro</label>
+                    </div>
+
+                    <div style="display: flex; gap: 15px;">
+                        <div class="input-group" style="flex: 3;">
+                            <input type="text" name="cidade" id="cidade" placeholder=" " required>
+                            <label for="cidade">Cidade</label>
+                        </div>
+                        <div class="input-group" style="flex: 1;">
+                            <input type="text" name="estado" id="estado" placeholder=" " required maxlength="2">
+                            <label for="estado">UF</label>
+                        </div>
+                    </div>
+
+                </div>
             </div>
 
         </section>
 
-        <!-- =====================================
-                   RESUMO DO PEDIDO
-        ====================================== -->
         <aside class="checkout-summary">
             <h1>Resumo</h1>
 
@@ -128,19 +144,6 @@ function formatarMoeda($valor)
                         R$ <?= formatarMoeda($total_carrinho) ?>
                     </span>
                 </div>
-
-                <!-- <div class="desconto">
-                    <div class="des_total">
-                        <p>Desconto:</p>
-                        <span>R$ 0,00</span>
-                    </div>
-
-                    <div class="lista">
-                        <?php for ($i=0; $i<6; $i++): ?>
-                            <p>Sem Descontos</p>
-                        <?php endfor; ?>
-                    </div>
-                </div> -->
             </div>
 
             <div class="total">
@@ -149,13 +152,13 @@ function formatarMoeda($valor)
                     R$ <?= formatarMoeda($total_carrinho) ?>
                 </span>
 
-                <button class="btn-finalizar">FINALIZAR PEDIDO</button>
+                <?php if (!empty($itens_carrinho_view)): ?>
+                    <button class="btn-finalizar">FINALIZAR PEDIDO</button>
+                <?php else: ?>
+                     <button class="btn-finalizar" disabled style="opacity: 0.5;">CARRINHO VAZIO</button>
+                <?php endif; ?>
             </div>
         </aside>
-
-        <!-- Telas adicionais -->
-        <div class="escuro"></div>
-        <div class="infopagamento"></div>
 
     </main>
 
@@ -165,6 +168,10 @@ function formatarMoeda($valor)
     ?>
 
     <script src="../js/checkout.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <script>
+        $('#cep').mask('00000-000');
+    </script>
 
 </body>
 </html>
