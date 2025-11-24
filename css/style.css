@@ -26,11 +26,18 @@ a:hover {
 }
 
 body {
-    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; 
+    overflow-x: hidden; 
     font-family: 'Poppins', Arial, sans-serif;
     background-color: #FFF1E1;
     color: #231F20;
     transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+}
+
+main {
+    flex: 1;
 }
 
 /* HEADER */

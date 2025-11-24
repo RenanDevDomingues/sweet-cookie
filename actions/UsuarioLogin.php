@@ -4,7 +4,7 @@ include("../config/conexao.php");
 $email = $_POST['email'];
 $senha = $_POST['senha'];
 
-$stmt = $conn->prepare("SELECT id, nome, senha, email, nivel FROM usuarios WHERE email = ?");
+$stmt = $conn->prepare("SELECT * FROM usuarios WHERE email = ?");
 $stmt->bind_param("s", $email);
 $stmt->execute();
 

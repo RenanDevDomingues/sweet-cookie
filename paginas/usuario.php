@@ -1,20 +1,54 @@
 <?php
 session_start();
+require_once "../config/conexao.php";
+
 $usuario = null;
 
-if (!empty($_SESSION['logado'])) {
+if (!empty($_SESSION['logado'])){
     $usuario = $_SESSION['usuario'];
+} 
+else 
+{
+    header("Location: login.php");
+    exit;
+}
+
+$historico_compras = [];
+$id_usuario = $usuario['id'];
+
+$sql = "SELECT 
+            p.id as produto_id, 
+            p.nome, 
+            p.imagem, 
+            ped.id as pedido_id, 
+            ped.data_pedido
+        FROM pedido_itens ip
+        INNER JOIN pedidos ped ON ip.pedido_id = ped.id
+        INNER JOIN produtos p ON ip.produto_id = p.id
+        WHERE ped.usuario_id = ?
+        ORDER BY ped.data_pedido DESC
+        LIMIT 6";
+
+if ($stmt = $conn->prepare($sql)) {
+    $stmt->bind_param("i", $id_usuario);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    
+    while ($row = $result->fetch_assoc()) {
+        $historico_compras[] = $row;
+    }
+    $stmt->close();
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sweet Cookies</title>
     <link rel="stylesheet" href="../css/usuario.css">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700,800&display=swap" rel="stylesheet">
+    <title>Minha Conta | Sweet Cookies</title>
 </head>
 
 <body>
@@ -23,112 +57,129 @@ if (!empty($_SESSION['logado'])) {
     include("../config/header.php");
     ?>
 
+    <main class="conta-container">
+        
+        <section class="card profile-card">
+            
+            <div class="profile-avatar-area">
+                <div class="avatar-circle">
+                    <img src="../img/cookie-mascot.png" alt="Avatar" onerror="this.src='https://cdn-icons-png.flaticon.com/512/1047/1047711.png'">
+                </div>
+            </div>
 
-    <main>
-        <div class="usuario">
-            <div class="perfil">
-                <div class="foto"></div>
-                <div class="nome">
-                    <h1>Nome</h1>
-                    <h3>USUARIO JOHN</h3>
-                </div>
-            </div>
-            <div class="perfil-info">
-                <div class="info">
-                    <h2>Telefone</h2>
-                    <div class="atualizar">
-                        <p>Numero</p>
+            <div class="profile-data-area">
+                <div class="data-group">
+                    <label>Nome de usuário</label>
+                    <div class="data-bar">
+                        <?= htmlspecialchars($usuario['nome']) ?>
                     </div>
-                    <p class="alterar" id="telefone">Alterar Telefone</p>
                 </div>
-                <div class="info">
-                    <h2>Email</h2>
-                    <div class="atualizar">
-                        <p>Email@gmail.com</p>
+
+                <div class="data-group">
+                    <label>E-mail</label>
+                    <div class="data-bar">
+                        <?= htmlspecialchars($usuario['email']) ?>
                     </div>
-                    <p class="alterar" id="email">Alterar Email</p>
                 </div>
-                <div class="info">
-                    <h2>CEP</h2>
-                    <div class="atualizar">
-                        <p>11111-111</p>
+
+                <div class="data-group">
+                    <label>Senha</label>
+                    <div class="data-bar password-bar">********</div>
+                    <a href="#" class="forgot-link">Trocar de senha</a>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="card history-card">
+            <h2>Histórico de compras</h2>
+
+            <div class="history-list">
+                
+                <?php if (empty($historico_compras)): ?>
+                    <p style="text-align: center; color: #777;">Você ainda não realizou nenhuma compra.</p>
+                <?php else: ?>
+                    
+                    <?php foreach($historico_compras as $item): ?>
+                    <div class="history-item">
+                        <div class="item-left">
+                            <div class="item-img">
+                                <?php 
+                                    $img_path = "../uploads/produtos/" . $item['imagem'];
+                                    // Verifica se a imagem existe, senão usa placeholder
+                                    $img_src = file_exists($img_path) && !empty($item['imagem']) ? $img_path : '../img/cookie-placeholder.png';
+                                ?>
+                                <img src="<?= $img_src ?>" alt="<?= $item['nome'] ?>">
+                            </div>
+                            <div style="display: flex; flex-direction: column;">
+                                <span class="item-name"><?= $item['nome'] ?></span>
+                                <span style="font-size: 0.8rem; color: #666;">
+                                    Pedido #<?= $item['pedido_id'] ?> • <?= date('d/m/Y', strtotime($item['data_pedido'])) ?>
+                                </span>
+                            </div>
+                        </div>
+                        
+                        <button class="btn-buy-again" data-id="<?= $item['produto_id'] ?>">
+                            Comprar novamente
+                        </button>
                     </div>
-                    <p class="alterar" id="cep">Alterar CEP</p>
-                </div>
+                    <?php endforeach; ?>
+
+                <?php endif; ?>
+
             </div>
-        </div>
-        <div class="historico">
-            <div class="title">
-                <h1>HISTORICO</h1>
-            </div>
-            <div class="lista">
-                <div class="compra">
-                    <img src='../img/choco-belga.png'>
-                    <h3>Nome</h3>
-                    <h4> R$ 0,00</h4>
-                </div>
-                <div class="compra">
-                    <img src='../img/choco-belga.png'>
-                    <h3>Nome</h3>
-                    <h4> R$ 0,00</h4>
-                </div>
-                <div class="compra">
-                    <img src='../img/choco-belga.png'>
-                    <h3>Nome</h3>
-                    <h4> R$ 0,00</h4>
-                </div>
-                <div class="compra">
-                    <img src='../img/choco-belga.png'>
-                    <h3>Nome</h3>
-                    <h4> R$ 0,00</h4>
-                </div>
-                <div class="compra">
-                    <img src='../img/choco-belga.png'>
-                    <h3>Nome</h3>
-                    <h4> R$ 0,00</h4>
-                </div>
-                <div class="compra">
-                    <img src='../img/choco-belga.png'>
-                    <h3>Nome</h3>
-                    <h4> R$ 0,00</h4>
-                </div>
-                <div class="compra">
-                    <img src='../img/choco-belga.png'>
-                    <h3>Nome</h3>
-                    <h4> R$ 0,00</h4>
-                </div>
-                <div class="compra">
-                    <img src='../img/choco-belga.png'>
-                    <h3>Nome</h3>
-                    <h4> R$ 0,00</h4>
-                </div>
-            </div>
-        </div>
+        </section>
+
     </main>
 
+    <?php
+    $path = "../";
+    include("../config/footer.php");
+    ?>
+    
+    <script>
+        $(document).ready(function() 
+        {
+            $('.btn-buy-again').on('click', function() 
+            {
+                let produtoId = $(this).data('id');
+                let $btn = $(this);
+                let textoOriginal = $btn.text();
 
-    <footer>
-        <div class="footer-content">
-            <div class="footer-brand">
-                <img src="../img/Sweet.svg" alt="Sweet Cookies">
-                <div class="footer-social">
-                    <a href="https://www.instagram.com/sweetcookies_ofc" target="_blank"><img src="../img/Instagram.png"
-                            alt="Instagram"></a>
-                    <a href="#"><img src="../img/WhatsApp.png" alt="WhatsApp" target="_blank"></a>
-                </div>
-                <div class="footer-info">
-                    2025 Sweet cookies. Todos os direitos reservados.
-                </div>
-            </div>
-            <div class="footer-links">
-                <strong>Informações Legais</strong>
-                <a href="#">Política de privacidade</a>
-                <a href="#">Termos de uso</a>
-                <a href="#">Segurança de dados</a>
-            </div>
-        </div>
-    </footer>
-    <script src="../js/atualizarinfo.js"></script>
+                $btn.text('Adicionando...').prop('disabled', true);
+
+                $.ajax({
+                    url: '../actions/CarrinhoAdd.php',
+                    method: 'POST',
+                    dataType: 'json',
+                    data: {
+                        id: produtoId,
+                        action: 'add'
+                    },
+                    success: function(data) {
+                        if (data.status === 'success') 
+                        {
+                            $('.cart-badge').text(data.cart_count);
+                            
+                            $btn.text('Adicionado!');
+                            setTimeout(function(){
+                                window.location.href = 'carrinho.php';
+                            }, 500);
+                        } 
+                        else 
+                        {
+                            alert(data.message);
+                            $btn.text(textoOriginal).prop('disabled', false);
+                        }
+                    },
+                    error: function() 
+                    {
+                        alert('Erro ao adicionar ao carrinho.');
+                        $btn.text(textoOriginal).prop('disabled', false);
+                    }
+                });
+            });
+        });
+    </script>
 </body>
-
 </html>

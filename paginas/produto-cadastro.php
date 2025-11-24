@@ -27,8 +27,8 @@
                     <option value="cookie_doce">Cookie doce</option>
                     <option value="cookie_salgado">Cookie salgado</option>
                     <option value="vestuario">Vestuário</option>
-                    <option value="utensilios">Utensílio</option>
-                    <option value="outros">Outro</option>
+                    <option value="utensilio">Utensílio</option>
+                    <option value="outro">Outro</option>
                 </select>
             </div>
             <div class="info">
