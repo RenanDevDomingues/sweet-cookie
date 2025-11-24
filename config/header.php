@@ -86,12 +86,7 @@ if (isset($_SESSION['carrinho']))
             <img src="<?php echo $path; ?>img/navbar-hero.svg" alt="Menu">
             <h2>Menu</h2>
         </div>
-        <div class="option">
-            <img src="<?php echo $path; ?>img/casa.svg" alt="home">
-            <a href="<?php echo $path; ?>paginas/usuario.php">
-                <h2>Perfil</h2>
-            </a>
-        </div>
+        
         <div class="option">
             <img src="<?php echo $path; ?>img/casa.svg" alt="home">
             <a href="<?php echo $path; ?>index.php">
@@ -111,6 +106,10 @@ if (isset($_SESSION['carrinho']))
         </a>
         </div>
         <div class="option">
+            <img src="<?php echo $path; ?>img/contato.svg" alt="home">
+            <a href="<?php echo $path; ?>paginas/usuario.php">
+                <h2>Perfil</h2>
+            </a>
         </div>
         <div class="promododia">
             <img src="<?php echo $path; ?>img/navbar-hero.svg" alt="Promoção do Dia">
