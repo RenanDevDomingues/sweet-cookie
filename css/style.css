@@ -1,4 +1,7 @@
 /* Reset */
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,600,700,800&display=swap');
+
+/* Fonte carregada via import acima */
 * {
     margin: 0;
     padding: 0;

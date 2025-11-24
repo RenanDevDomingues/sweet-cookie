@@ -27,10 +27,9 @@ if (isset($_SESSION['carrinho']))
     }
 }
 ?>
-
-<link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700,800&display=swap" rel="stylesheet">
-
+<link rel="stylesheet" href="<?php echo $path; ?>css/style.css">
 <header>
+    
     <div class="header-content">
         <a href="<?php echo $path; ?>index.php">
             <img src="<?php echo $path; ?>img/Sweet.svg" alt="Sweet Cookies" class="logo">

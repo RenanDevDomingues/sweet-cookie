@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 -- Copiando dados para a tabela sweet_cookie.usuarios: ~1 rows (aproximadamente)
 DELETE FROM `usuarios`;
 INSERT INTO `usuarios` (`id`, `nome`, `email`, `cpf`, `cep`, `bairro`, `endereco`, `numero`, `complemento`, `senha`, `autenticacao`, `nivel`, `created_at`, `updated_at`) VALUES
-	(1, 'Master', 'master@sweetcookie.com', '', '', '', '', '', '', '$2y$10$2strfpCdo0CeFCK12ta2X.HZ8FRa6vBceRiQHrOJQm0wCXZuxaTYi', '', '1', '2025-11-22 01:27:37', '2025-11-22 01:27:56');
+	(1, 'Master', 'master@sweetcookie.com', '', '', '', '', '', '', '$2y$10$2strfpCdo0CeFCK12ta2X.HZ8FRa6vBceRiQHrOJQm0wCXZuxaTYi', '', '2', '2025-11-22 01:27:37', '2025-11-22 01:27:56');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

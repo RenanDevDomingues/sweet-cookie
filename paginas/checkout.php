@@ -42,8 +42,8 @@ function formatarMoeda($valor)
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout | Sweet Cookies</title>
 
+    <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/checkout.css">
-    <link rel="stylesheet" href="../css/cardapio.css">
 </head>
 
 <body>
