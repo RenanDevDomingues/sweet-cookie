@@ -7,21 +7,22 @@
     <title>Sweet Cookies</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/cadastro.css">
+    <link rel="stylesheet" href="../css/responsive.css">
 </head>
-
 <body>
+    
     <div class="cadastro">
         <form action="../actions/ProdutoCreate.php" id="form-cadastrar" method="POST" enctype="multipart/form-data">
             <h2>Cadastro de Produto</h2>
             <div class="info">
-                <input type="text" name="nome" id="nome" placeholder="Ex: Cookie de caramelo " required>
-                <label for="nome">Nome</label>
+                <input type="text" name="nome" id="nome" placeholder="Nome produto " required>
             </div>
             <div class="info">
-                <input type="text" name="descricao" id="descricao" placeholder="Ex: Um delicioso cookie de caramelho para adoçar o dia! " required>
-                <label for="descricao">Descrição</label>
+                <input type="text" name="descricao" id="descricao" placeholder="Descrição" required>
             </div>
+            
             <div class="info">
+                             <label for="tipo">Tipo</label>
                 <select name="tipo" id="tipo">
                     <option value="cookie_doce">Cookie doce</option>
                     <option value="cookie_salgado">Cookie salgado</option>
@@ -29,22 +30,18 @@
                     <option value="utensilios">Utensílio</option>
                     <option value="outros">Outro</option>
                 </select>
-                <label for="tipo">Tipo</label>
             </div>
             <div class="info">
                 <select name="categoria" id="categoria"></select>
-                <label for="categoria">Categoria</label>
             </div>
             <div class="info">
                 <input type="text" name="preco" id="preco" placeholder="Ex: 6,99" required>
-                <label for="preco">Preço</label>
             </div>
             <div class="info">
                 <input type="file" name="imagem" id="imagem" required>
-                <label for="imagem">Imagem</label>
             </div>
             <div class="submit">
-                <a href="login.php">Você já possui Cadastro?</a>
+                <a href="login.php"></a>
                 <button id="btn-cadastrar" type="submit">Cadastrar</button>
             </div>
         </form>

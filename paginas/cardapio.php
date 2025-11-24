@@ -26,6 +26,7 @@
     <title>Cardápio | Sweet Cookies</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/cardapio.css">
+    <link rel="stylesheet" href="../css/responsive.css">
 </head>
 
 <body>

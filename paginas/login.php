@@ -7,6 +7,7 @@
     <title>Sweet Cookies</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/cadastro.css">
+    <link rel="stylesheet" href="../css/responsive.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 

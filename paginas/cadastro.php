@@ -7,6 +7,7 @@
     <title>Sweet Cookies</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/cadastro.css">
+    <link rel="stylesheet" href="../css/responsive.css">
 </head>
 
 <body>

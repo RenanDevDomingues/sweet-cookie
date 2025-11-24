@@ -44,6 +44,7 @@ function formatarMoeda($valor)
 
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/checkout.css">
+        <link rel="stylesheet" href="../css/responsive.css">
 </head>
 
 <body>
