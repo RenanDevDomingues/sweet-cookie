@@ -2,71 +2,12 @@
 require_once '../config/header.php';
 require_once '../config/conexao.php';
 
-// Exemplo de consulta ao banco para dashboard
 $usuarios = mysqli_query($conn, "SELECT nome, email FROM usuarios LIMIT 10");
 $totalUsuarios = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) as total FROM usuarios"))['total'];
 $ativosOnline = "0";
 $cadastrosSemana = "$totalUsuarios";
 
-// ===============================
-// EXPORTAR CSV
-// ===============================
-if (isset($_GET['export']) && $_GET['export'] === 'csv') {
-    header('Content-Type: text/csv; charset=utf-8');
-    header('Content-Disposition: attachment; filename=produtos.csv');
-    $output = fopen('php://output', 'w');
-
-	fputcsv($output, ['ID', 'Nome', 'Descrição', 'Preço']);
-	$result = $conn->query('SELECT id, nome, descricao, preco FROM produtos');
-	while ($row = $result->fetch_assoc()) {
-		fputcsv($output, $row);
-	}
-
-    fclose($output);
-    exit;
-}
-
-// ===============================
-// EXPORTAR PDF
-// ===============================
-if (isset($_GET['export']) && $_GET['export'] === 'pdf') {
-
-    class PDF extends FPDF {
-        function Header() {
-            $this->SetFont('Arial','B',16);
-            $this->Cell(0,10,'Relatorio de Produtos',0,1,'C');
-            $this->Ln(5);
-        }
-    }
-
-    $pdf = new PDF();
-    $pdf->AddPage();
-    $pdf->SetFont('Arial','B',12);
-
-
-	$pdf->Cell(10,10,'ID',1);
-	$pdf->Cell(50,10,'Nome',1);
-	$pdf->Cell(60,10,'Descricao',1);
-	$pdf->Cell(25,10,'Preco',1);
-	$pdf->Ln();
-
-	$pdf->SetFont('Arial','',10);
-	$result = $conn->query('SELECT id, nome, descricao, preco FROM produtos');
-
-	while ($row = $result->fetch_assoc()) {
-		$pdf->Cell(10,10,$row['id'],1);
-		$pdf->Cell(50,10,utf8_decode($row['nome']),1);
-		$pdf->Cell(60,10,utf8_decode(substr($row['descricao'],0,30)),1);
-		$pdf->Cell(25,10,'R$ '.number_format($row['preco'],2,',','.'),1);
-		$pdf->Ln();
-	}
-
-    $pdf->Output('I', 'produtos.pdf');
-    exit;
-}
-
 $total_produtos = $conn->query('SELECT COUNT(*) FROM produtos')->fetch_row()[0];
-// $total_estoque = $conn->query('SELECT SUM(quantidade) FROM produtos')->fetch_row()[0]; // Removido pois não existe coluna quantidade
 $total_logs = $conn->query('SELECT COUNT(*) FROM logs')->fetch_row()[0];
 $total_usuarios = $conn->query('SELECT COUNT(*) FROM usuarios')->fetch_row()[0];
 
@@ -102,23 +43,14 @@ $total_usuarios = $conn->query('SELECT COUNT(*) FROM usuarios')->fetch_row()[0];
 			<section id="tab-usuarios">
 				<h2 style="color:#bdbdbd; font-size:1.3rem; margin-bottom:18px;"><i class="fa fa-users"></i> Gerenciamento de Usuários</h2>
 				<div class="dashboard-filters">
-					<select>
-						<option>Inativo</option>
-						<option>Ativo</option>
-					</select>
-					<select>
-						<option>Tipo de Usuário</option>
-						<option>Admin</option>
-						<option>Usuário</option>
-					</select>
-					<select>
-						<option>Ordenar por</option>
-						<option>Nome</option>
-						<option>Status</option>
-					</select>
-					<button id="export-csv">Exportar CSV</button>
-					<button id="export-pdf">Exportar PDF</button>
-					<input type="text" id="search-user" placeholder="Buscar usuário..." style="margin-left:auto;">
+					
+					<a href="../actions/UsuarioExportCsv.php" class="export-button csv">
+						Exportar CSV
+					</a>
+					                   
+					<a href="../actions/UsuarioExportPdf.php" class="export-button pdf">
+						Exportar PDF
+					</a>
 					
 				</div>
 				<table class="dashboard-table" id="usuarios-table">

@@ -173,6 +173,40 @@ body {
 .dashboard-pagination button:hover {
     background: #b71c1c;
 }
+/* Estilo Base para os Botões */
+.export-button {
+    display: inline-block; /* Para que ele aceite padding/margin */
+    padding: 10px 20px;
+    margin-right: 15px;
+    border-radius: 5px; /* Cantos arredondados */
+    text-decoration: none; /* Remove o sublinhado */
+    color: white; /* Cor do texto */
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s ease; /* Transição suave para hover */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Estilo Específico para o CSV (Verde/Sucesso) */
+.export-button.csv {
+    background-color: #28a745; /* Verde */
+    border: 1px solid #28a745;
+}
+
+/* Estilo Específico para o PDF (Vermelho/Perigo) */
+.export-button.pdf {
+    background-color: #dc3545; /* Vermelho */
+    border: 1px solid #dc3545;
+}
+
+/* Efeito ao Passar o Mouse */
+.export-button.csv:hover {
+    background-color: #218838;
+}
+
+.export-button.pdf:hover {
+    background-color: #c82333;
+}
 @media (max-width: 900px) {
     .dashboard-main {
         flex-direction: column;
