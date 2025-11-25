@@ -78,15 +78,29 @@ if ($stmt = $conn->prepare($sql)) {
                 <div class="data-group">
                     <label>E-mail</label>
                     <div class="data-bar">
-                        <?= htmlspecialchars($usuario['email']) ?>
+                        <?= htmlspecialchars($usuario['email']); ?>
                     </div>
                 </div>
 
                 <div class="data-group">
+                    <label>CPF</label>
+                    <div class="data-bar">
+                        <?= htmlspecialchars($usuario['cpf']); ?>
+                    </div>
+                </div>
+
+                <div class="data-group">
+                    <label>CEP</label>
+                    <div class="data-bar">
+                        <?= htmlspecialchars($usuario['cep']); ?>
+                    </div>
+                </div>
+
+                <!-- <div class="data-group">
                     <label>Senha</label>
                     <div class="data-bar password-bar">********</div>
                     <a href="#" class="forgot-link">Trocar de senha</a>
-                </div>
+                </div> -->
             </div>
         </section>
 

@@ -155,7 +155,7 @@
                 { value: "meias", text: "Meias" }
             ],
 
-            utensilios: [
+            utensilio: [
                 { value: "copo", text: "Copo" },
                 { value: "garrafa", text: "Garrafa" },
                 { value: "bloco_de_notas", text: "Bloco de notas" },
@@ -164,7 +164,7 @@
                 { value: "chaveiro", text: "Chaveiro" }
             ],
 
-            outros: [
+            outro: [
                 { value: "kit_presente", text: "Kit Presente" },
                 { value: "decoracao", text: "Decoração" },
                 { value: "acessorios", text: "Acessórios" },

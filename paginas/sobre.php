@@ -38,11 +38,11 @@ if (!empty($_SESSION['logado'])) {
             <h2>Desenvolvedores</h2>
             <div class="sobre-lista">
                 <div class="sobre-card sobre-card1">
-                    <img src="../img/Cookie piscante.svg" alt="Cookie">
+                    <img src="../img/cokicc.svg" alt="Cookie">
                     <div class="sobre-pessoa">
                         <div class="sobre-nome">
                             <h3>Victor de Lucena</h3>
-                            <a href="https://github.com/LucenaVicc"><img src="../img/github.jpg" alt="" class="sobre-github"></a>
+                            <a target="_blank" href="https://github.com/LucenaVicc"><img src="../img/github.jpg" alt="" class="sobre-github"></a>
                         </div>
                         <p>Design, Front-end e Back-end</p>
                     </div>
@@ -52,27 +52,27 @@ if (!empty($_SESSION['logado'])) {
                     <div class="sobre-pessoa">
                         <div class="sobre-nome">
                             <h3>Renan Domingues</h3>
-                            <a href="https://github.com/RenanDevDomingues"><img src="../img/github.jpg" alt="" class="sobre-github"></a>
+                            <a target="_blank" href="https://github.com/RenanDevDomingues"><img src="../img/github.jpg" alt="" class="sobre-github"></a>
                         </div>
                         <p>Front-end e Back-end</p>
                     </div>
                 </div>
                 <div class="sobre-card sobre-card1">
-                    <img src="../img/Cookie piscante.svg" alt="Cookie">
+                    <img src="../img/cookaua.svg" alt="Cookie">
                     <div class="sobre-pessoa">
                         <div class="sobre-nome">
                             <h3>Cauã Arruda</h3>
-                            <a href="https://github.com/rayrazer"><img src="../img/github.jpg" alt="" class="sobre-github"></a>
+                            <a target="_blank" href="https://github.com/rayrazer"><img src="../img/github.jpg" alt="" class="sobre-github"></a>
                         </div>
                         <p>Front-end e Back-end</p>
                     </div>
                 </div>
                 <div class="sobre-card sobre-card2">
-                    <img src="../img/Cookie piscante.svg" alt="Cookie">
+                    <img src="../img/cookilherme.svg" alt="Cookie">
                     <div class="sobre-pessoa">
                         <div class="sobre-nome">
                             <h3>Guilherme Cabral</h3>
-                            <a href="https://github.com/Gui-cs06"><img src="../img/github.jpg" alt="" class="sobre-github"></a>
+                            <a target="_blank" href="https://github.com/Gui-cs06"><img src="../img/github.jpg" alt="" class="sobre-github"></a>
                         </div>
                         <p>Front-end e Back-end</p>
                     </div>

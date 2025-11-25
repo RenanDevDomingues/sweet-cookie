@@ -8,7 +8,7 @@
 <?php
 require_once '../config/conexao.php';
 
-$usuarios = mysqli_query($conn, "SELECT nome, email FROM usuarios LIMIT 10");
+$usuarios = mysqli_query($conn, "SELECT nome, email, cpf, cep FROM usuarios LIMIT 10");
 $totalUsuarios = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) as total FROM usuarios"))['total'];
 $ativosOnline = "0";
 $cadastrosSemana = "$totalUsuarios";
@@ -34,16 +34,21 @@ $total_usuarios = $conn->query('SELECT COUNT(*) FROM usuarios')->fetch_row()[0];
 	<div class="dashboard-header">
 		<img src="../img/Chip Padrão.png" alt="Sweet Cookies Logo" style="height:48px; width:auto; margin-right:18px;">
 		<span class="dashboard-title">DASHBOARD</span>
-		<span style="margin-left:auto; color:#fff; font-size:1rem;"><i class="fa fa-user"></i> Área ADM</span>
+		<span style="margin-left:auto; color:#fff; font-size:1rem;display: flex;flex-direction: row;align-items:center;gap: 20px">
+			<a href="../actions/UsuarioLogout.php" class="login">
+				<img src="../img/usuario.svg" alt="Usuário">
+				<span>Deslogar</span>
+			</a>	
+			<i class="fa fa-user"></i> Área ADM
+		</span>
 	</div>
 	<div class="dashboard-main">
 		<aside class="dashboard-sidebar">
 			<h3>ADMINISTRATIVO</h3>
 			<ul>
 				<li class="dashboard-tab" data-tab="usuarios"><i class="fa fa-users"></i> Usuários</li>
-				<li class="dashboard-tab" data-tab="logs"><i class="fa fa-file-text"></i> Logs</li>
+				<!-- <li class="dashboard-tab" data-tab="logs"><i class="fa fa-file-text"></i> Logs</li> -->
 				<li class="dashboard-tab" data-tab="produtos"><i class="fa fa-cube"></i> Produtos</li>
-				<li class="dashboard-tab" data-tab="paginas"><i class="fa fa-pag"></i> Paginas</li>
 			</ul>
 		</aside>
 		<main class="dashboard-content">
@@ -52,11 +57,11 @@ $total_usuarios = $conn->query('SELECT COUNT(*) FROM usuarios')->fetch_row()[0];
 					Gerenciamento de Usuários</h2>
 				<div class="dashboard-filters">
 					
-					<a href="../actions/UsuarioExportCsv.php" class="export-button csv">
+					<a target="_blank" href="../actions/UsuarioExportCsv.php" class="export-button csv">
 						Exportar CSV
 					</a>
 					                   
-					<a href="../actions/UsuarioExportPdf.php" class="export-button pdf">
+					<a target="_blank" href="../actions/UsuarioExportPdf.php" class="export-button pdf">
 						Exportar PDF
 					</a>
 					
@@ -66,8 +71,8 @@ $total_usuarios = $conn->query('SELECT COUNT(*) FROM usuarios')->fetch_row()[0];
 						<tr>
 							<th>Nome</th>
 							<th>E-mail</th>
-							<th>Role</th>
-							<th>Ações</th>
+							<th>CPF</th>
+							<th>CEP</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -78,15 +83,8 @@ $total_usuarios = $conn->query('SELECT COUNT(*) FROM usuarios')->fetch_row()[0];
 							<tr>
 								<td><?php echo htmlspecialchars($u['nome']); ?></td>
 								<td><?php echo htmlspecialchars($u['email']); ?></td>
-								<td><?php echo isset($u['role']) ? htmlspecialchars($u['role']) : 'Usuário'; ?></td>
-								<td class="actions">
-									<button class="btn-editar-usuario"
-										data-nome="<?php echo htmlspecialchars($u['nome']); ?>"
-										data-email="<?php echo htmlspecialchars($u['email']); ?>"
-										data-role="<?php echo isset($u['role']) ? htmlspecialchars($u['role']) : 'Usuário'; ?>"><i
-											class="fa fa-pencil"></i></button>
-									<button class="btn-excluir-usuario"><i class="fa fa-trash"></i></button>
-								</td>
+								<td><?php echo htmlspecialchars($u['cpf']); ?></td>
+								<td><?php echo htmlspecialchars($u['cep']); ?></td>
 							</tr>
 						<?php endwhile; ?>
 					</tbody>
@@ -132,14 +130,6 @@ $total_usuarios = $conn->query('SELECT COUNT(*) FROM usuarios')->fetch_row()[0];
 								style="background:#444; color:#fff; border:none; padding:8px 18px; border-radius:5px;">Cancelar</button>
 						</div>
 					</form>
-				</div>
-				<div class="dashboard-pagination">
-					<button class="active">1</button>
-					<button>2</button>
-					<button>3</button>
-				</div>
-				<div style="margin-top:10px; color:#bdbdbd; font-size:0.95rem;">
-					Exibindo 1-10 de <?php echo $totalUsuarios; ?> usuários
 				</div>
 			</section>
 			<section id="tab-logs" style="display:none;">
@@ -200,27 +190,6 @@ $total_usuarios = $conn->query('SELECT COUNT(*) FROM usuarios')->fetch_row()[0];
 						<?php endif; ?>
 					</tbody>
 				</table>
-			</section>
-			<section id="tab-paginas" style="display:none;">
-				<h2 style="color:#bdbdbd; font-size:1.3rem; margin-bottom:18px;"><i class="fa fa-file"></i> Páginas do Site</h2>
-				<div class="page-buttons" style="display:flex; flex-wrap:wrap; gap:10px;">
-					<a href="../index.php" class="btn-nav">Home</a>
-					<a href="cardapio.php" class="btn-nav">Cardápio</a>
-					<a href="carrinho.php" class="btn-nav">Carrinho</a>
-					<a href="checkout.php" class="btn-nav">Checkout</a>
-					<a href="cadastro.php" class="btn-nav">Cadastro</a>
-					<a href="cadastro2.php" class="btn-nav">Cadastro (2)</a>
-					<a href="login.php" class="btn-nav">Login</a>
-					<a href="login2.php" class="btn-nav">Login (2)</a>
-					<a href="sobre.php" class="btn-nav">Sobre</a>
-					<a href="usuario.php" class="btn-nav">Minha Conta</a>
-					<a href="merchan.php" class="btn-nav">Merchan</a>
-					<a href="area%20usuario.php" class="btn-nav">Área Usuário</a>
-					<a href="produto-cadastro.php" class="btn-nav">Cadastrar Produto</a>
-					<a href="produto-editar.php" class="btn-nav">Editar Produto</a>
-					<a href="produto-delete.php" class="btn-nav">Excluir Produto</a>
-				</div>
-				<div style="margin-top:12px; color:#bdbdbd; font-size:0.95rem;">Clique em um botão para abrir a página correspondente.</div>
 			</section>
 		</main>
 	</div>

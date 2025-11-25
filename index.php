@@ -78,22 +78,22 @@
             <h2>Nossos produtos</h2>
             <div class="sabores-lista">
                 <div class="sabor-card">
-                    <img src="img/garrafa.png" alt="Chocolate Belga">
+                    <img src="img/casaco.png" alt="Chocolate Belga">
                     <span class="badge">Mais Vendido</span>
-                    <h3>Garrafa Sweet Cookies</h3>
-                    <p>Garrafinha elegante da Sweet Cookies para te acompanhar</p>
+                    <h3>Casaco Sweet</h3>
+                    <p>Um casaco bonito</p>
                 </div>
                 <div class="sabor-card">
-                    <img src="img/chaveiro.png" alt="Matcha & Chocolate Branco">
+                    <img src="img/Copo de café 2.png" alt="Matcha & Chocolate Branco">
                     <span class="badge vegano">Favorito</span>
-                    <h3>Chaveiro Sweet Cookies</h3>
-                    <p>Chaveiro charmoso da Sweet Cookies para levar com você</p>
+                    <h3>Copo</h3>
+                    <p>Um copo maneiro</p>
                 </div>
                 <div class="sabor-card">
-                    <img src="img/notebook.png" alt="Red Velvet">
+                    <img src="img/Caixa Posição 3.png" alt="Red Velvet">
                     <span class="badge novidade">Novidade</span>
-                    <h3>Agenda Sweet Cookies</h3>
-                    <p>Agenda exclusiva com design único</p>
+                    <h3>Kit presente</h3>
+                    <p>Presenteie alguém legal</p>
                 </div>
             </div>
             <a href="./paginas/merchan.php" class="cardapio-link">

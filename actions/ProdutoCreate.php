@@ -47,7 +47,7 @@ $stmt->bind_param("ssssds",
 
 if ($stmt->execute())
 {
-    header("Location: ../paginas/produto-cadastro.php");
+    header("Location: ../paginas/dashboard.php");
     exit;
 }
 else{
