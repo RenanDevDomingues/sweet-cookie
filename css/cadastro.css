@@ -23,20 +23,25 @@ body {
 form {
     display: flex;
     flex-direction: column;
-    border: 2px solid black;
+    border: 1.5px solid rgba(255, 255, 255, 0.25);
     border-radius: 25px;
-    padding: 10%;
+    padding: 50px;
     width: 40vw;
     max-height: 80vh;
-    gap: 22px;
-    background-color: white opacity 0.5;
-    backdrop-filter: blur(16px);
+    gap: 20px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.15) 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1), inset 0 0 32px 0 rgba(255, 255, 255, 0.1);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
 }
 
 form h2 {
-    font-size: 3.0em;
+    font-size: 2.5em;
     text-align: center;
-    margin: 0 0;
+    margin: 0 0 20px 0;
     font-weight: bold;
 }
 
@@ -44,24 +49,48 @@ form .info {
     position: relative;
     display: flex;
     flex-direction: column;
+    margin-bottom: 10px;
 }
 
 form .info label {
     position: absolute;
-    top: 10px;
-    left: 0;
+    top: 12px;
+    left: 8px;
     display: flex;
-    transition: 0.2s;
+    transition: all 0.3s ease;
     pointer-events: none;
-    font-size: 1.2em;
+    font-size: 1em;
+    color: rgba(102, 102, 102, 0.7);
+    font-weight: 500;
 }
 
-form .info input {
+form .info input,
+form .info select {
     border: none;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid rgba(200, 200, 200, 0.5);
     outline: none;
-    font-size: 2.0em;
-    background-color: transparent;
+    font-size: 1em;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 12px 8px;
+    transition: all 0.3s ease;
+    font-family: Poppins, sans-serif;
+    border-radius: 4px 4px 0 0;
+}
+
+form .info input[type="file"] {
+    padding: 12px 0;
+    cursor: pointer;
+}
+
+form .info input:focus,
+form .info select:focus {
+    border-bottom-color: #C1282E;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 8px rgba(193, 40, 46, 0.2);
+}
+
+form .info input::placeholder {
+    color: transparent;
 }
 
 form a {
@@ -73,30 +102,86 @@ form .info a {
     text-decoration: underline;
 }
 
-input:focus ~ label, input:valid ~ label, input:not(:placeholder-shown) ~ label {
-    top: -20px;
-    font-size: 1.2em;
+input:focus ~ label, 
+input:valid ~ label, 
+input:not(:placeholder-shown) ~ label,
+select:focus ~ label,
+select:valid ~ label {
+    top: -25px;
+    font-size: 0.9em;
     opacity: 0.7;
+    color: #C1282E;
 }
 
 .submit {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 15px;
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .submit button {
-    border-radius: 10px;
-    padding: 5px 20px;
-    background-color: #C1282E;
+    border-radius: 12px;
+    padding: 12px 40px;
+    background: linear-gradient(135deg, #C1282E 0%, #a02228 100%);
     color: white;
-    font-size: 1.2em;
+    font-size: 1em;
+    border: 1.5px solid rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 16px rgba(193, 40, 46, 0.2);
+}
+
+.submit button:hover {
+    background: linear-gradient(135deg, #a02228 0%, #8b1a1e 100%);
+    box-shadow: 0 12px 24px rgba(193, 40, 46, 0.3);
+    transform: translateY(-2px);
 }
 
 form:invalid .submit button {
     pointer-events: none;
-    background-color: gray;
+    background-color: #ccc;
+}
+
+form .info span {
+    position: absolute;
+    top: 12px;
+    left: 8px;
+    display: flex;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    font-size: 1em;
+    color: rgba(102, 102, 102, 0.7);
+    font-weight: 500;
 }
 
 .info a {
     margin: 10px 0 0 0;
+}
+
+/* Glassmorphism Effects */
+form .info input::placeholder {
+    color: transparent;
+}
+
+form .info select:hover {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+/* Animation for labels and inputs */
+form .info input:valid ~ label,
+form .info input:not(:placeholder-shown) ~ label,
+form .info select:valid ~ label,
+form .info select:not(:invalid) ~ label {
+    top: -25px;
+    font-size: 0.85em;
+    color: #C1282E;
+    font-weight: 600;
+}
+
+/* Scrollbar glassmorphism */
+form .info select {
+    color-scheme: light;
 }

@@ -34,7 +34,6 @@ if (isset($_SESSION['carrinho']))
         <a href="<?php echo $path; ?>index.php">
             <img src="<?php echo $path; ?>img/Sweet.svg" alt="Sweet Cookies" class="logo">
         </a>
-        
         <?php if ($nivel_usuario != '2'): ?>
             <div class="header-search">
                 <input type="text" placeholder="O que deseja buscar?">

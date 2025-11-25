@@ -19,35 +19,48 @@
     <div class="cadastro">
         <form action="../actions/ProdutoCreate.php" id="form-cadastrar" method="POST" enctype="multipart/form-data">
             <h2>Cadastro de Produto</h2>
+            
             <div class="info">
-                <input type="text" name="nome" id="nome" placeholder="Nome produto " required>
+                <input type="text" name="nome" id="nome" placeholder=" " required>
+                <label for="nome">Nome do Produto</label>
             </div>
+            
             <div class="info">
-                <input type="text" name="descricao" id="descricao" placeholder="Descrição" required>
+                <input type="text" name="descricao" id="descricao" placeholder=" " required>
+                <label for="descricao">Descrição</label>
             </div>
-
+                <span for="tipo">Tipo</span>    
             <div class="info">
-                <label for="tipo">Tipo</label>
-                <select name="tipo" id="tipo">
+   
+                <select name="tipo" id="tipo" required>
+                    <option value="">Selecione um tipo</option>
                     <option value="cookie_doce">Cookie doce</option>
                     <option value="cookie_salgado">Cookie salgado</option>
                     <option value="vestuario">Vestuário</option>
                     <option value="utensilio">Utensílio</option>
                     <option value="outro">Outro</option>
                 </select>
+                
             </div>
+                <span for="tipo">Categoria</span>    
             <div class="info">
-                <select name="categoria" id="categoria"></select>
+                <select name="categoria" id="categoria" required>
+                    <option value="">Selecione uma categoria</option>
+                </select>
             </div>
+            
             <div class="info">
-                <input type="text" name="preco" id="preco" placeholder="Ex: 6,99" required>
+                <input type="text" name="preco" id="preco" placeholder=" " required>
+                <label for="preco">Preço</label>
             </div>
+            
             <div class="info">
                 <input type="file" name="imagem" id="imagem" required>
+                <label for="imagem">Imagem do Produto</label>
             </div>
+            
             <div class="submit">
-                <a href="login.php"></a>
-                <button id="btn-cadastrar" type="submit">Cadastrar</button>
+                <button id="btn-cadastrar" type="submit">Cadastrar Produto</button>
             </div>
         </form>
     </div>

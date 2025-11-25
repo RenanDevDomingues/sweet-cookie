@@ -57,23 +57,26 @@
 .cardapio-card {
     background: #fff;
     border-radius: 16px;
-    box-shadow: 0 2px 12px #0001;
-    padding: 0 0 18px 0;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    padding: 0;
     width: 100%;
     max-width: 320px;
     text-align: left;
     position: relative;
-    transition: box-shadow 0.2s, transform 0.2s;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 .cardapio-card:hover {
-    box-shadow: 0 8px 32px rgba(233, 160, 106, 0.15);
-    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 12px 32px rgba(233, 160, 106, 0.25);
+    transform: translateY(-8px);
 }
 .cardapio-img-area {
     position: relative;
     width: 100%;
-    height: 180px;
-    border-radius: 16px 16px 0 0;
+    height: 200px;
+    border-radius: 0;
     overflow: hidden;
     background: #f5e7d8;
 }
@@ -81,18 +84,24 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.3s ease;
+}
+.cardapio-card:hover .cardapio-img-area img {
+    transform: scale(1.08);
 }
 .cardapio-card .badge {
     position: absolute;
-    top: 14px;
-    left: 14px;
+    top: 12px;
+    left: 12px;
     background: #F7C948;
     color: #fff;
-    font-size: 0.95rem;
-    font-weight: 600;
-    border-radius: 8px;
-    padding: 4px 12px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    border-radius: 6px;
+    padding: 6px 14px;
     z-index: 2;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .cardapio-card .bg-pink{
@@ -102,14 +111,24 @@
     background: #f98407 !important;
 }
 .cardapio-card h3 {
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     font-weight: 700;
-    margin: 18px 0 6px 18px;
+    margin: 20px 20px 8px 20px;
     color: #231F20;
+    line-height: 1.3;
 }
 .cardapio-card p {
-    color: #231F20;
-    font-size: 1rem;
+    color: #666;
+    font-size: 0.95rem;
+    margin: 0 20px 12px 20px;
+    line-height: 1.5;
+    flex-grow: 1;
+}
+
+/* Garante que doces e salgados tenham o mesmo tamanho */
+.cardapio-doces .cardapio-card,
+.cardapio-salgados .cardapio-card {
+    max-width: 320px;
 }
 
 /* MONTE SEU COOKIE */
@@ -238,35 +257,48 @@
 
 .qty-control {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     gap: 12px;
-    margin-top: 12px;
+    margin-top: 16px;
+    padding: 0 20px 20px 20px;
 }
 
 .qty-btn {
-    width: 42px;
-    height: 42px;
-    background: #292929;
-    color: #fff;
-    border: none;
-    border-radius: 14px;
-    font-size: 26px;
+    width: 40px;
+    height: 40px;
+    background: #f0f0f0;
+    color: #231F20;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 20px;
     font-weight: 700;
     cursor: pointer;
-    transition: .2s ease;
+    transition: all 0.2s ease;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .qty-btn:hover {
-    background: #000;
+    background: #231F20;
+    color: #fff;
+    border-color: #231F20;
 }
 
 .qty-value {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 700;
-    min-width: 24px;
+    min-width: 30px;
     text-align: center;
+    color: #231F20;
+}
+
+/* Estilo para o preço */
+.cardapio-card .preco {
+    display: block;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #a81f1f;
+    margin: 0 20px 16px 20px;
 }

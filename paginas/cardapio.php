@@ -34,7 +34,7 @@ $result_salgado = $conn->query($sql);
     ?>
 
     <!-- CARDÁPIO -->
-    <section class="cardapio-section">
+    <section class="cardapio-section cardapio-doces">
         <h2>Nossos Cookies Doces Especiais</h2>
         <span class="cardapio-subtitle">Receitas irresistíveis criadas para adoçar todos os momentos</span>
         <div class="cardapio-lista">
@@ -75,75 +75,8 @@ $result_salgado = $conn->query($sql);
             <?php endwhile; ?>
         </div>
     </section>
-    <!-- Perso o seu cookie -->
-    <section class="monte-cookie-section">
-        <h2>Monte seu cookie personalizado</h2>
-        <div class="monte-cookie-content">
-            <div class="cookie-preview">
-                <h3>Seu cookie personalizado</h3>
-                <p>Visualize seu cookie aqui</p>
-                <img src="../img/choco-belga.png" alt="Cookie Preview">
-            </div>
-            <form method='POST' class="cookie-form">
-                <label>Escolha sua massa</label>
-                <div class="opcoes">
-                    <div class="opcao-btn">
-                        <input type="radio" name="massa" value="chocolate" hidden>
-                        <p>Chocolate</p>
-                    </div>
-                    <div class="opcao-btn">
-                        <input type="radio" name="massa" value="doce de leite" hidden>
-                        <p>Doce de Leite</p>
-                    </div>
-                    <div class="opcao-btn">
-                        <input type="radio" name="massa" value="Nutella" hidden>
-                        <p>Nutella</p>
-                    </div>
-                    <div class="opcao-btn">
-                        <input type="radio" name="massa" value="Goiabada" hidden>
-                        <p>Goiabada</p>
-                    </div>
-                    <!-- <button type="button" class="opcao-btn selected">Clássica</button>
-                    <button type="button" class="opcao-btn">Integral</button>
-                    <button type="button" class="opcao-btn">Sem Glúten</button>
-                    <button type="button" class="opcao-btn">Vegana</button> -->
-                </div>
-                <label>Escolha seu recheio</label>
-                <div class="checkbox-group">
-                    <label><input type="checkbox"> Chocolate</label>
-                    <label><input type="checkbox"> Doce de leite</label>
-                    <label><input type="checkbox"> Nutella</label>
-                    <label><input type="checkbox"> Goiabada</label>
-                </div>
-                <label>Escolha o tamanho</label>
-                <div class="opcoes">
-                    <div class="opcao-btn">
-                        <input type="radio" name="tamanho" value="pequeno" hidden>
-                        <p>Pequeno</p>
-                    </div>
-                    <div class="opcao-btn">
-                        <input type="radio" name="tamanho" value="medio" hidden>
-                        <p>Médio</p>
-                    </div>
-                    <div class="opcao-btn">
-                        <input type="radio" name="tamanho" value="grande" hidden>
-                        <p>Grande</p>
-                    </div>
-                    <div class="opcao-btn">
-                        <input type="radio" name="tamanho" value="gigante" hidden>
-                        <p>Gigante</p>
-                    </div>
-                    <!-- <button type="button" class="opcao-btn">Pequeno</button>
-                    <button type="button" class="opcao-btn selected">Médio</button>
-                    <button type="button" class="opcao-btn">Grande</button>
-                    <button type="button" class="opcao-btn">Gigante</button> -->
-                </div>
-                <button class="btn-main" type="submit">Escolha sua massa</button>
-            </form>
-        </div>
-    </section>
     <!-- CARDÁPIO2 -->
-    <section class="cardapio-section">
+    <section class="cardapio-section cardapio-salgados">
         <h2>Nossos Cookies Salgados Especiais</h2>
         <span class="cardapio-subtitle">Receitas irresistíveis criadas para salgar todos os momentos</span>
         <div class="cardapio-lista">

@@ -48,17 +48,19 @@ $produto = $result->fetch_assoc();
 
             <div class="info">
                 <input type="text" name="nome"
-                    value="<?php echo htmlspecialchars($produto['nome']); ?>" required>
+                    value="<?php echo htmlspecialchars($produto['nome']); ?>" placeholder=" " required>
+                <label for="nome">Nome do Produto</label>
             </div>
 
             <div class="info">
                 <input type="text" name="descricao"
-                    value="<?php echo htmlspecialchars($produto['descricao']); ?>" required>
+                    value="<?php echo htmlspecialchars($produto['descricao']); ?>" placeholder=" " required>
+                <label for="descricao">Descrição</label>
             </div>
 
+            <span for="tipo">Tipo</span>    
             <div class="info">
-                <label for="tipo">Tipo</label>
-                <select name="tipo" id="tipo">
+                <select name="tipo" id="tipo" required>
                     <option value="cookie_doce" <?php if ($produto['tipo']=="cookie_doce") echo "selected"; ?>>Cookie doce</option>
                     <option value="cookie_salgado" <?php if ($produto['tipo']=="cookie_salgado") echo "selected"; ?>>Cookie salgado</option>
                     <option value="vestuario" <?php if ($produto['tipo']=="vestuario") echo "selected"; ?>>Vestuário</option>
@@ -67,13 +69,15 @@ $produto = $result->fetch_assoc();
                 </select>
             </div>
 
+            <span for="tipo">Categoria</span>    
             <div class="info">
-                <select name="categoria" id="categoria"></select>
+                <select name="categoria" id="categoria" required></select>
             </div>
 
             <div class="info">
                 <input type="text" name="preco" id="preco"
-                    value="<?php echo number_format($produto['preco'], 2, ',', '.'); ?>" required>
+                    value="<?php echo number_format($produto['preco'], 2, ',', '.'); ?>" placeholder=" " required>
+                <label for="preco">Preço</label>
             </div>
 
             <div class="info">

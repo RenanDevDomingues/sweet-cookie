@@ -6,7 +6,6 @@
 
 
 <?php
-require_once '../config/header.php';
 require_once '../config/conexao.php';
 
 $usuarios = mysqli_query($conn, "SELECT nome, email FROM usuarios LIMIT 10");
@@ -44,8 +43,7 @@ $total_usuarios = $conn->query('SELECT COUNT(*) FROM usuarios')->fetch_row()[0];
 				<li class="dashboard-tab" data-tab="usuarios"><i class="fa fa-users"></i> Usuários</li>
 				<li class="dashboard-tab" data-tab="logs"><i class="fa fa-file-text"></i> Logs</li>
 				<li class="dashboard-tab" data-tab="produtos"><i class="fa fa-cube"></i> Produtos</li>
-				<!-- <li class="dashboard-tab" data-tab="area1">area1</li>
-				<li class="dashboard-tab" data-tab="area2">area2</li> -->
+				<li class="dashboard-tab" data-tab="paginas"><i class="fa fa-pag"></i> Paginas</li>
 			</ul>
 		</aside>
 		<main class="dashboard-content">
@@ -202,6 +200,27 @@ $total_usuarios = $conn->query('SELECT COUNT(*) FROM usuarios')->fetch_row()[0];
 						<?php endif; ?>
 					</tbody>
 				</table>
+			</section>
+			<section id="tab-paginas" style="display:none;">
+				<h2 style="color:#bdbdbd; font-size:1.3rem; margin-bottom:18px;"><i class="fa fa-file"></i> Páginas do Site</h2>
+				<div class="page-buttons" style="display:flex; flex-wrap:wrap; gap:10px;">
+					<a href="../index.php" class="btn-nav">Home</a>
+					<a href="cardapio.php" class="btn-nav">Cardápio</a>
+					<a href="carrinho.php" class="btn-nav">Carrinho</a>
+					<a href="checkout.php" class="btn-nav">Checkout</a>
+					<a href="cadastro.php" class="btn-nav">Cadastro</a>
+					<a href="cadastro2.php" class="btn-nav">Cadastro (2)</a>
+					<a href="login.php" class="btn-nav">Login</a>
+					<a href="login2.php" class="btn-nav">Login (2)</a>
+					<a href="sobre.php" class="btn-nav">Sobre</a>
+					<a href="usuario.php" class="btn-nav">Minha Conta</a>
+					<a href="merchan.php" class="btn-nav">Merchan</a>
+					<a href="area%20usuario.php" class="btn-nav">Área Usuário</a>
+					<a href="produto-cadastro.php" class="btn-nav">Cadastrar Produto</a>
+					<a href="produto-editar.php" class="btn-nav">Editar Produto</a>
+					<a href="produto-delete.php" class="btn-nav">Excluir Produto</a>
+				</div>
+				<div style="margin-top:12px; color:#bdbdbd; font-size:0.95rem;">Clique em um botão para abrir a página correspondente.</div>
 			</section>
 		</main>
 	</div>

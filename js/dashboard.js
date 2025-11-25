@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('tab-usuarios').style.display = selected === 'usuarios' ? '' : 'none';
             document.getElementById('tab-logs').style.display = selected === 'logs' ? '' : 'none';
             document.getElementById('tab-produtos').style.display = selected === 'produtos' ? '' : 'none';
+            document.getElementById('tab-paginas').style.display = selected === 'paginas' ? '' : 'none';
             document.getElementById('tab-area1').style.display = selected === 'area1' ? '' : 'none';
             document.getElementById('tab-area2').style.display = selected === 'area2' ? '' : 'none';
             document.querySelectorAll('.dashboard-tab').forEach(t => t.classList.remove('active'));

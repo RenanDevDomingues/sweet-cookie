@@ -35,7 +35,7 @@
         </div>
     </section>
 
-    <!-- SABORES -->
+    <!-- SABORES doce -->
     <section class="sabores-section">
         <div class="container">
             <h2>Nossos sabores</h2>
@@ -65,7 +65,7 @@
         </div>
     </section>
 
-    <!-- PRODUTOS EM DESTAQUE -->
+    <!-- PRODUTOS EM DESTAQUE produtos -->
     <section class="produtos-destaque">
         <div class="produtos-imgs">
             <img src="img/produtos.png" alt="produtos em destaque">
@@ -78,22 +78,22 @@
             <h2>Nossos produtos</h2>
             <div class="sabores-lista">
                 <div class="sabor-card">
-                    <img src="img/choco-belga.png" alt="Chocolate Belga">
+                    <img src="img/garrafa.png" alt="Chocolate Belga">
                     <span class="badge">Mais Vendido</span>
-                    <h3>Chocolate Belga</h3>
-                    <p>Feito com chocolate belga 70% cacau e pedaços crocantes</p>
+                    <h3>Garrafa Sweet Cookies</h3>
+                    <p>Garrafinha elegante da Sweet Cookies para te acompanhar</p>
                 </div>
                 <div class="sabor-card">
-                    <img src="img/cookie-matcha.png" alt="Matcha & Chocolate Branco">
-                    <span class="badge vegano">Vegano</span>
-                    <h3>Matcha & Chocolate Branco</h3>
-                    <p>Massa de matcha premium com chocolate branco vegano</p>
+                    <img src="img/chaveiro.png" alt="Matcha & Chocolate Branco">
+                    <span class="badge vegano">Favorito</span>
+                    <h3>Chaveiro Sweet Cookies</h3>
+                    <p>Chaveiro charmoso da Sweet Cookies para levar com você</p>
                 </div>
                 <div class="sabor-card">
-                    <img src="img/red-velvet.png" alt="Red Velvet">
+                    <img src="img/notebook.png" alt="Red Velvet">
                     <span class="badge novidade">Novidade</span>
-                    <h3>Red Velvet</h3>
-                    <p>Massa vermelha com recheio de cream cheese e gotas de chocolate</p>
+                    <h3>Agenda Sweet Cookies</h3>
+                    <p>Agenda exclusiva com design único</p>
                 </div>
             </div>
             <a href="./paginas/merchan.php" class="cardapio-link">
