@@ -9,8 +9,13 @@
     <link rel="stylesheet" href="../css/cadastro.css">
     <link rel="stylesheet" href="../css/responsive.css">
 </head>
+
 <body>
-    
+
+    <a href="dashboard.php" id="logo">
+        <img src="../img/Sweet.svg" alt="Sweet Cookies" class="logo">
+    </a>
+
     <div class="cadastro">
         <form action="../actions/ProdutoCreate.php" id="form-cadastrar" method="POST" enctype="multipart/form-data">
             <h2>Cadastro de Produto</h2>
@@ -20,9 +25,9 @@
             <div class="info">
                 <input type="text" name="descricao" id="descricao" placeholder="Descrição" required>
             </div>
-            
+
             <div class="info">
-                             <label for="tipo">Tipo</label>
+                <label for="tipo">Tipo</label>
                 <select name="tipo" id="tipo">
                     <option value="cookie_doce">Cookie doce</option>
                     <option value="cookie_salgado">Cookie salgado</option>
@@ -57,7 +62,7 @@
             affixesStay: false
         });
 
-        const categorias = 
+        const categorias =
         {
 
             cookie_doce: [
@@ -154,8 +159,7 @@
             ]
         };
 
-        function preencherCategorias(lista) 
-        {
+        function preencherCategorias(lista) {
             const select = $("#categoria");
             select.empty();
 
@@ -166,8 +170,7 @@
 
         preencherCategorias(categorias.cookie_doce);
 
-        $("#tipo").on("change", function () 
-        {
+        $("#tipo").on("change", function () {
             const tipo = $(this).val();
             preencherCategorias(categorias[tipo]);
         });

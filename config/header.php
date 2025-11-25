@@ -111,6 +111,12 @@ if (isset($_SESSION['carrinho']))
                 <h2>Perfil</h2>
             </a>
         </div>
+        <div class="option">
+            <img src="<?php echo $path; ?>img/contato.svg" alt="home">
+            <a href="<?php echo $path; ?>paginas/sobre.php">
+                <h2>Sobre Nós</h2>
+            </a>
+        </div>
         <div class="promododia">
             <img src="<?php echo $path; ?>img/navbar-hero.svg" alt="Promoção do Dia">
             <a href="<?php echo $path; ?>index.php">

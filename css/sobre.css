@@ -1,0 +1,112 @@
+/* Sobre */
+.sobre-section {
+    background: transparent;
+    padding: 4vh 0 3vh 0;
+    position: relative;
+}
+
+.sobre-section .bg-cookies {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 0.18;
+    pointer-events: none;
+}
+
+.sobre-section .container {
+    position: relative;
+    z-index: 1;
+}
+
+.sobre-section h2 {
+    text-align: center;
+    font-size: 2.3rem;
+    font-weight: 700;
+    margin-bottom: 3vh;
+}
+
+.sobre-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5vw;
+    margin-bottom: 3vh;
+}
+
+.sobre-card {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 1.1rem;
+    box-shadow: 0 .1rem 1rem #0001;
+    padding-bottom: 2vh;
+    width: 40vw;
+    padding: 1vw 2vw 2vw 2vw;
+    overflow: hidden;
+    position: relative;
+}
+
+.sobre-card img {
+    width: 5vw;
+    height: 5vw;
+    margin: 1vw 0 0 1vw;
+}
+
+.sobre-card .sobre-pessoa {
+    margin: 0 1vw;
+}
+
+.sobre-card .sobre-pessoa .sobre-nome {
+    display: flex;
+    align-items: center;
+
+}
+
+.sobre-card1 {
+    margin: 0 0 0 5vw;
+}
+
+.sobre-card2 {
+    margin: 0 0 0 55vw;
+}
+
+.sobre-card .sobre-pessoa a {
+    margin: 0;
+}
+
+.sobre-card .sobre-pessoa .sobre-github {
+    width: 2vw;
+    height: 2vw;
+}
+
+.sobre-card h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.sobre-card p {
+    color: #231F20;
+    font-size: 1rem;
+    margin-left: 0;
+}
+
+.sobre-section .btn-main {
+    display: block;
+    margin: 0 auto;
+    background: #C62828;
+    color: #fff;
+    border: none;
+    border-radius: 2rem;
+    padding: 1.5vh 1.2vw;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.sobre-section .btn-main:hover {
+    background: #a81f1f;
+}
