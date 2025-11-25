@@ -63,7 +63,7 @@ if ($stmt = $conn->prepare($sql)) {
             
             <div class="profile-avatar-area">
                 <div class="avatar-circle">
-                    <img src="../img/cookie-mascot.png" alt="Avatar" onerror="this.src='https://cdn-icons-png.flaticon.com/512/1047/1047711.png'">
+                    <img src="../img/Cookie piscante.svg" alt="Avatar" onerror="this.src='https://cdn-icons-png.flaticon.com/512/1047/1047711.png'">
                 </div>
             </div>
 

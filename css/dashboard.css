@@ -126,6 +126,7 @@ body {
 .dashboard-table th, .dashboard-table td {
     padding: 14px 10px;
     text-align: left;
+    color: black;
 }
 .dashboard-table th {
     background: #d32f2f;

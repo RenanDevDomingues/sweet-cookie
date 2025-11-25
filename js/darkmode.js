@@ -6,7 +6,7 @@ addEventListener('DOMContentLoaded', function() {
 
 function applydarkmode(darkmode) {
     if (darkmode) {
-        document.querySelector('.darkmode-toggle').style.transform = 'translateX(80px)';
+        document.querySelector('.darkmode-toggle').style.transform = 'translateX(3.8vw)';
         document.querySelector('.darkmode-toggle').id='dark-toggle';
         document.querySelector('.darkmode').id='dark-mode';
         document.body.style.backgroundColor = '#2F3233';
